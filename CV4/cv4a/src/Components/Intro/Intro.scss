@@ -54,5 +54,14 @@
   position: absolute;
   z-index: 1;
 }
-.i-right > :nth-child(1) {
+.i-right > :nth-child(1),
+.i-right > :nth-child(2) {
+  transform: scale(0.69);
+  left: -15%;
+  top: -9%;
+}
+.i-right > :nth-child(3) {
+  transform: scale(1);
+  left: 20%;
+  top: 9%;
 }
