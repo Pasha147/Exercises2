@@ -1,0 +1,49 @@
+.services {
+  padding: 0 3rem 0 3rem;
+  display: flex;
+  height: 90vh;
+  margin-bottom: 8rem;
+  margin-top: 9rem;
+  //   border: 1px solid black;
+}
+.awesome {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  & > :nth-child(1) {
+    color: var(--black);
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  & > :nth-child(2) {
+    color: var(--orange);
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  & > :nth-child(3) {
+    color: var(--gray);
+    font-size: 0.8rem;
+    margin-top: 1rem;
+  }
+}
+.s-button {
+  width: 8rem;
+  height: 2rem;
+  margin-top: 1rem;
+}
+.cards {
+  position: relative;
+}
+.cards > * {
+  position: absolute;
+}
+
+/* blur */
+.s-blur2 {
+  left: 100%;
+  top: 20%;
+}
+.s-blur1 {
+  left: 0rem;
+  top: 70%;
+}
