@@ -10,8 +10,11 @@ import thumbup from "../../img/thumbup.png";
 import crown from "../../img/crown.png";
 import glassesimoji from "../../img/glassesimoji.png";
 import { Floatingdiv } from "../Floatingdiv/Floatingdiv";
+import { motion } from "framer-motion";
 
 export const Intro = () => {
+  const transition = { duration: 2, type: "spring" };
+
   return (
     <div className="intro">
       <div className="i-left">
@@ -34,12 +37,23 @@ export const Intro = () => {
         <img src={Vector1} alt="" />
         <img src={Vector2} alt="" />
         <img src={boy} alt="" />
-        <img src={glassesimoji} alt="" />
+        <motion.img
+          initial={{ left: "-36%" }}
+          whileInView={{ left: "-14%" }}
+          transition={transition}
+          src={glassesimoji}
+          alt=""
+        />
 
         {/* 40minutes text1 text2 need to be refactoring*/}
-        <div style={{ top: "-4%", left: "68%" }}>
+        <motion.div
+          initial={{ top: "-4%", left: "94%" }}
+          whileInView={{ left: "68%" }}
+          transition={transition}
+          style={{ top: "-4%", left: "68%" }}
+        >
           <Floatingdiv image={crown} text1="Web" text2="Developer" />
-        </div>
+        </motion.div>
 
         <div style={{ top: "18rem", left: "0rem" }}>
           <Floatingdiv image={thumbup} text1="Best Design" text2="Award" />

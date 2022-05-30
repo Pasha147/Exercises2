@@ -8,7 +8,7 @@ import Resume from "./PAVEL V_5.pdf";
 
 export const Services = () => {
   return (
-    <div className="services">
+    <div className="services" id="Services">
       <div className="awesome">
         <span>My Awesome</span>
         <span>services</span>

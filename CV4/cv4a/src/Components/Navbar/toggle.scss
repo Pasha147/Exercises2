@@ -1,0 +1,11 @@
+.toggle {
+  width: 3rem;
+  height: 1rem;
+  border: 3px solid var(--orange);
+  border-radius: 1rem;
+  cursor: pointer;
+  padding: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
