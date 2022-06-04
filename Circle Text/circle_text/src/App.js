@@ -2,6 +2,118 @@ import "./App.css";
 import { useEffect, useRef, useState } from "react";
 
 function App() {
+  const ref = useRef({ text: [], abc: [], radius: 100 });
+  const [curChar, setCurChar] = useState("");
+  const charBlockRef = useRef(null);
+  // let radius = 100;
+
+  const handleInput = (e) => {
+    const text = e.target.value;
+    let chars = text.split("");
+    // let textRef = (ref.current.text = [...chars]);
+    let abcRef = ref.current.abc;
+    ref.current.text = [];
+    let textRef = ref.current.text;
+
+    chars.forEach((e) => {
+      let curCharAbc = abcRef.find((el) => el.char === e);
+      if (!curCharAbc) {
+        charBlockRef.current.innerText = e === " " ? `\u00A0 ` : e;
+        let width = charBlockRef.current.getBoundingClientRect().width;
+        charBlockRef.current.innerText = "";
+        abcRef.push({ char: e, width: width });
+        curCharAbc = { char: e, width: width };
+      }
+      textRef.push(curCharAbc);
+    });
+
+    //+sumWidth===============
+    textRef[0] = { ...textRef[0], sumWidth: 0 };
+    for (let i = 1; i < textRef.length; i++) {
+      textRef[i] = {
+        ...textRef[i],
+        sumWidth: textRef[i - 1].sumWidth + textRef[i - 1].width,
+      };
+    }
+    //+angles=================
+    let radius = ref.current.radius;
+    let circleLength = 2 * radius * Math.PI;
+    ref.current.text = textRef.map((e) => {
+      let angle = (e.width / circleLength) * 360;
+      let sumAngle = (e.sumWidth / circleLength) * 360;
+      return { ...e, angle: angle, sumAngle: sumAngle };
+    });
+    setCurChar(text);
+    // console.log(ref.current);
+  };
+
+  const radHandleChange = (e) => {
+    const curRad = e.target.value;
+    ref.current.radius = curRad;
+    console.log(curRad);
+    //+angles=================
+    let textRef = ref.current.text;
+    let radius = ref.current.radius;
+    let circleLength = 2 * radius * Math.PI;
+    ref.current.text = textRef.map((e) => {
+      let angle = (e.width / circleLength) * 360;
+      let sumAngle = (e.sumWidth / circleLength) * 360;
+      return { ...e, angle: angle, sumAngle: sumAngle };
+    });
+    setCurChar(radius);
+  };
+
+  return (
+    <div className="App">
+      <div className="inpForm">
+        <input type="text" onChange={handleInput} />
+
+        <div>
+          <div className="textLine" ref={charBlockRef}>
+            {/* {curChar === " " ? `\u00A0 ` : `${curChar}`} */}
+          </div>
+          {/* <div className="textLine">{curChar}</div> */}
+        </div>
+        {/* <button onClick={click}>Show width</button> */}
+        <div>
+          <input
+            type="range"
+            name="radius"
+            min="10"
+            max="2000"
+            onChange={radHandleChange}
+          />
+          <label htmlFor="radius">Radius</label>
+        </div>
+        <div></div>
+      </div>
+      <div className="circle">
+        {ref.current.text.map((e, index) => {
+          // console.log(e);
+          if (ref.current.text) {
+            return (
+              <span
+                key={index}
+                style={{
+                  transform: `rotate(${e.sumAngle}deg)`,
+                  transformOrigin: `0 ${ref.current.radius}px`,
+                }}
+              >
+                {e.char}
+              </span>
+            );
+          }
+        })}
+      </div>
+    </div>
+  );
+}
+
+export default App;
+
+/*
+
+function App() {
   const [text, setText] = useState("");
   // const [carChar, setCarChar] = useState("");
   const textBlockRef = useRef(null);
@@ -14,13 +126,19 @@ function App() {
   const [radius, setRadius] = useState(150);
   // const radius = 150;
 
-  // const radius = 150;
-  // mc
+  //
+
+  useEffect(() => {
+    let char = charBlockRef.current.innerText;
+    let width = charBlockRef.current.getBoundingClientRect().width;
+    console.log(">>", char + " " + width);
+  });
+
   const handleInput = (e) => {
     const text = e.target.value;
-    setText(text);
     let textMass = text.split("");
-
+    
+    
     // library =====================
     let abcMass = abcRef.current.abcMass.map((e) => {
       return e.char;
@@ -32,6 +150,10 @@ function App() {
       }
     });
     // library =====================
+
+    
+    setText(text);
+
 
     let abcMass1 = abcRef.current.abcMass;
     // console.log(abcMass1, textMass);
@@ -112,12 +234,7 @@ function App() {
     <div className="App">
       <div className="inpForm">
         <input type="text" onChange={handleInput} />
-        {/* <div>
-          <div className="textLine" ref={textBlockRef}>
-            {text}
-          </div>
-        </div> */}
-        <div>
+               <div>
           <div className="textLine" ref={charBlockRef}>
             {abcChars === " " ? `\u00A0 ` : `${abcChars}`}
           </div>
@@ -154,4 +271,4 @@ function App() {
   );
 }
 
-export default App;
+*/
