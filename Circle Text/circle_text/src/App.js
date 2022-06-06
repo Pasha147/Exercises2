@@ -2,159 +2,134 @@ import "./App.css";
 import { useEffect, useRef, useState } from "react";
 
 function App() {
-  const [text, setText] = useState("");
-  // const [carChar, setCarChar] = useState("");
-  const textBlockRef = useRef(null);
+  const ref = useRef({ text: [], abc: [], radius: 100 });
+  const [curChar, setCurChar] = useState("");
   const charBlockRef = useRef(null);
-  const textRef = useRef({ textMass: [] });
-  const [circleMass, setCicleMass] = useState([]);
-
-  const abcRef = useRef({ abcMass: [] });
-  const [abcChars, setAbcChars] = useState("");
-  const [radius, setRadius] = useState(150);
-  // const radius = 150;
-
-  //
+  const circleBlockRef = useRef(null);
+  const ref1 = useRef({ circlWidth: 0, circleHeight: 0 });
+  const k = 0.8;
 
   useEffect(() => {
-    let char = charBlockRef.current.innerText;
-    let width = charBlockRef.current.getBoundingClientRect().width;
-    console.log(">>", char + " " + width);
-  });
+    let width = circleBlockRef.current.getBoundingClientRect().width;
+    let height = circleBlockRef.current.getBoundingClientRect().height;
+
+    ref1.current.circlWidth = width;
+    ref1.current.circleHeight = height;
+    console.log(ref1.current);
+  }, []);
 
   const handleInput = (e) => {
-    const text = e.target.value;
-    setText(text);
-    let textMass = text.split("");
+    let text = e.target.value;
+    let chars = text.split("");
+    let abcRef = ref.current.abc;
+    ref.current.text = [];
+    let textRef = ref.current.text;
 
-    // library =====================
-    let abcMass = abcRef.current.abcMass.map((e) => {
-      return e.char;
-    });
-    textMass.forEach((element) => {
-      if (!abcMass.includes(element)) {
-        abcMass.push(element);
-        setAbcChars(element);
+    chars.forEach((e) => {
+      let curCharAbc = abcRef.find((el) => el.char === e);
+      if (!curCharAbc) {
+        charBlockRef.current.innerText = e === " " ? `\u00A0 ` : e;
+        let width = charBlockRef.current.getBoundingClientRect().width * k;
+        let height = charBlockRef.current.getBoundingClientRect().height;
+        charBlockRef.current.innerText = "";
+        abcRef.push({ char: e, width: width, height: height });
+        curCharAbc = { char: e, width: width, height: height };
       }
+      textRef.push(curCharAbc);
     });
-    // library =====================
 
-    let abcMass1 = abcRef.current.abcMass;
-    // console.log(abcMass1, textMass);
-    let textRef1 = textRef.current.textMass;
-    setTimeout(() => {
-      let textMass1 = textMass.map((el) => {
-        return abcMass1.find((item) => item.char === el);
-      });
-      let circleLength = 2 * radius * Math.PI;
-      textMass1[0] = { ...textMass1[0], sumWidth: 0, angle: 0 };
-
-      let sumWidth = 0;
-      for (let i = 1; i < textMass1.length; i++) {
-        sumWidth = sumWidth + textMass1[i - 1].width;
-        const angle = (sumWidth / circleLength) * 360;
-        textMass1[i] = { ...textMass1[i], sumWidth: sumWidth, angle: angle };
-      }
-      textRef1 = [...textMass1];
-      // console.log(abcMass1, textRef1);
-      let circleMass = textMass1.map((e, index) => {
-        return { char: e.char, angle: e.angle };
-      });
-
-      setCicleMass(circleMass);
-    }, 0);
+    angels();
+    setCurChar(text);
+    console.log(ref.current);
   };
 
-  useEffect(() => {
-    let abcMass1 = abcRef.current.abcMass;
-    let textRef1 = textRef.current.textMass;
+  function angels() {
+    let textRef = ref.current.text;
+    let radius = ref.current.radius;
 
-    //  console.log(textRef1);
+    let sumAngle = 0;
+    textRef[0] = { ...textRef[0], sumAngle2: 0 };
+    textRef.forEach((e, index) => {
+      let angle = (Math.atan((0.5 * e.width) / radius) * 360) / Math.PI;
+      textRef[index] = { ...textRef[index], angle: angle };
+      if (index > 0) {
+        sumAngle = sumAngle + (angle + textRef[index - 1].angle) / 2;
+        textRef[index].sumAngle2 = sumAngle;
+      }
+    });
+  }
 
-    // let textMass1 = textMass.map((el) => {
-    //   return abcMass1.find((item) => item.char === el);
-    // });
-    // let circleLength = 2 * radius * Math.PI;
-    // textMass1[0] = { ...textMass1[0], sumWidth: 0, angle: 0 };
-
-    // let sumWidth = 0;
-    // for (let i = 1; i < textMass1.length; i++) {
-    //   sumWidth = sumWidth + textMass1[i - 1].width;
-    //   const angle = (sumWidth / circleLength) * 360;
-    //   textMass1[i] = { ...textMass1[i], sumWidth: sumWidth, angle: angle };
-    // }
-    // console.log(abcMass1, textMass1);
-    // textRef1 = [...textMass1];
-    // let circleMass = textMass1.map((e, index) => {
-    //   return { char: e.char, angle: e.angle };
-    // });
-
-    setCicleMass(circleMass);
-  }, [radius]);
-
-  useEffect(() => {
-    if (abcChars) {
-      let width = charBlockRef.current.getBoundingClientRect().width;
-      const height = charBlockRef.current.getBoundingClientRect().height;
-      let abcMass = abcRef.current.abcMass;
-      abcMass.push({ char: abcChars, width: width });
-    }
-  }, [abcChars]);
-
-  // useEffect(() => {
-  //   console.log(charBlockRef.current.innerText);
-  // }, [char]);
-
-  const click = () => {
-    console.log("---", charBlockRef.current.innerText);
+  const radHandleChange = (e) => {
+    ref.current.radius = Number(e.target.value);
+    angels();
+    console.log(ref.current);
+    setCurChar(e.target.value);
   };
 
-  const rangeChange = (e) => {
-    const radius = e.target.value;
-    setRadius(radius);
+  const proportionately = (e) => {
+    console.log(e.target.checked);
   };
 
   return (
     <div className="App">
       <div className="inpForm">
         <input type="text" onChange={handleInput} />
-        {/* <div>
-          <div className="textLine" ref={textBlockRef}>
-            {text}
-          </div>
-        </div> */}
+
         <div>
-          <div className="textLine" ref={charBlockRef}>
-            {abcChars === " " ? `\u00A0 ` : `${abcChars}`}
-          </div>
+          <div className="textLine" ref={charBlockRef}></div>
         </div>
-        <button onClick={click}>Show width</button>
-        <div>
+        <div className="inputBox">
           <input
-            onChange={rangeChange}
+            className="inpRad"
             type="range"
             name="radius"
-            min="0"
-            max="200"
+            min="2"
+            max="400"
+            value={ref.current.radius}
+            step="1"
+            onChange={radHandleChange}
           />
-          <label htmlFor="radius">Radius</label>
+          <label htmlFor="radius">{`Radius ${ref.current.radius}px`}</label>
+          <div className="proportionately">
+            <input
+              type="checkbox"
+              name="proportionately"
+              onChange={proportionately}
+              checked={false}
+            />
+            <label htmlFor="proportionately">Proportionately</label>
+          </div>
         </div>
-        <div></div>
       </div>
-      <div className="circle">
-        {circleMass.map((e, index) => {
-          return (
-            <span
-              key={index}
-              style={{
-                transform: `rotate(${e.angle}deg)`,
-                transformOrigin: `0 ${radius}px`,
-              }}
-            >
-              {e.char}
-            </span>
-          );
-        })}
+      <div className="circle" ref={circleBlockRef}>
+        {ref.current.text &&
+          ref.current.text.map((e, index) => {
+            return (
+              <div
+                key={index}
+                style={{
+                  top: `${
+                    ref1.current.circleHeight / 2 -
+                    ref.current.radius -
+                    e.height
+                  }px`,
+
+                  width: `${e.width}px`,
+                  height: `${e.height}px`,
+
+                  transformOrigin: `${e.width / 2}px ${
+                    e.height + ref.current.radius
+                  }px`,
+
+                  transform: ` translate(${-e.width / 2}px, ${0}px) rotate(${
+                    e.sumAngle2
+                  }deg) `,
+                }}
+              >
+                {e.char}
+              </div>
+            );
+          })}
       </div>
     </div>
   );
