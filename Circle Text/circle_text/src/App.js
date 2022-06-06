@@ -91,13 +91,8 @@ function App() {
           />
           <label htmlFor="radius">{`Radius ${ref.current.radius}px`}</label>
           <div className="proportionately">
-            <input
-              type="checkbox"
-              name="proportionately"
-              onChange={proportionately}
-              checked={false}
-            />
-            <label htmlFor="proportionately">Proportionately</label>
+            {/* 
+            <label htmlFor="proportionately">Proportionately</label> */}
           </div>
         </div>
       </div>
