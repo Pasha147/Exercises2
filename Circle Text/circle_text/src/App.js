@@ -7,8 +7,8 @@ function App() {
   const charBlockRef = useRef(null);
   const circleBlockRef = useRef(null);
   const ref1 = useRef({ circlWidth: 0, circleHeight: 0 });
-  const k = 0.8;
-  //ff
+  const k = 0.9;
+
   useEffect(() => {
     let width = circleBlockRef.current.getBoundingClientRect().width;
     let height = circleBlockRef.current.getBoundingClientRect().height;
