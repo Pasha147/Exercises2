@@ -8,15 +8,19 @@ function App() {
     radius: 100,
     Proportionately: false,
     fontSize: 16,
+    angle: 0,
+    compration: 1,
   });
 
   const [curChar, setCurChar] = useState("");
+  const [textInp, setTextInp] = useState("Я люблю УКРАЇНУ і Пашу.");
   const charBlockRef = useRef(null);
   const circleBlockRef = useRef(null);
   const ref1 = useRef({ circlWidth: 0, circleHeight: 0 });
-  const k = 0.8;
   const [checked, setChecked] = useState(false);
   const [fontSize, setFontSize] = useState(ref.current.fontSize);
+  const [angle, setAngle] = useState(ref.current.angle);
+  const [compration, setCompration] = useState(ref.current.compration);
 
   useEffect(() => {
     let width = circleBlockRef.current.getBoundingClientRect().width;
@@ -24,7 +28,9 @@ function App() {
 
     ref1.current.circlWidth = width;
     ref1.current.circleHeight = height;
-    // console.log(ref1.current);
+
+    changeLibText(textInp.split(""));
+    setCurChar(textInp);
   }, []);
 
   function changeLibText(text) {
@@ -37,7 +43,8 @@ function App() {
       let curCharAbc = abcRef.find((el) => el.char === e);
       if (!curCharAbc) {
         charBlockRef.current.innerText = e === " " ? `\u00A0 ` : e;
-        let width = charBlockRef.current.getBoundingClientRect().width * k;
+        let width =
+          charBlockRef.current.getBoundingClientRect().width * compration;
         let height = charBlockRef.current.getBoundingClientRect().height;
         charBlockRef.current.innerText = "";
         abcRef.push({ char: e, width: width, height: height });
@@ -53,7 +60,8 @@ function App() {
     let text = e.target.value;
     let chars = text.split("");
     changeLibText(chars);
-    setCurChar(text);
+    setTextInp(text);
+    // setCurChar(text);
     console.log(">>>", ref.current);
   };
 
@@ -66,11 +74,15 @@ function App() {
       const numChar = textRef.length;
       const angle = 360 / numChar;
       textRef.forEach((e, i) => {
-        textRef[i] = { ...textRef[i], sumAngle2: angle * i, angle: angle };
+        textRef[i] = {
+          ...textRef[i],
+          sumAngle2: angle * i + ref.current.angle,
+          angle: angle,
+        };
       });
     } else {
-      let sumAngle = 0;
-      textRef[0] = { ...textRef[0], sumAngle2: 0 };
+      let sumAngle = ref.current.angle;
+      textRef[0] = { ...textRef[0], sumAngle2: sumAngle };
       textRef.forEach((e, index) => {
         let angle = (Math.atan((0.5 * e.width) / radius) * 360) / Math.PI;
         textRef[index] = { ...textRef[index], angle: angle };
@@ -90,6 +102,11 @@ function App() {
 
   const proportionately = () => {
     ref.current.Proportionately = !ref.current.Proportionately;
+    if (!ref.current.Proportionately) {
+      ref.current.abc = [];
+      let chars = ref.current.text.map((e) => e.char);
+      changeLibText(chars);
+    }
     angels();
     console.log(ref.current);
     setChecked(ref.current.Proportionately);
@@ -104,10 +121,33 @@ function App() {
     setFontSize(e.target.value);
   };
 
+  const angleHandleChange = (e) => {
+    let curAngle = Number(e.target.value);
+    ref.current.angle = curAngle;
+    angels();
+    setAngle(curAngle);
+  };
+
+  const comprationHandleChange = (e) => {
+    let curCompr = Number(e.target.value);
+    ref.current.compration = curCompr;
+    if (!ref.current.Proportionately) {
+      ref.current.abc = [];
+      let chars = ref.current.text.map((e) => e.char);
+      changeLibText(chars);
+    }
+    setCompration(curCompr);
+  };
+
   return (
     <div className="App">
       <div className="inpForm">
-        <input className="inpText" type="text" onChange={handleInput} />
+        <input
+          className="inpText"
+          type="text"
+          value={textInp}
+          onChange={handleInput}
+        />
 
         <div>
           <div
@@ -148,6 +188,28 @@ function App() {
             onChange={fontSizeHandleChange}
           />
           <label htmlFor="fontSize">{`fontSize ${ref.current.fontSize}px`}</label>
+          <input
+            className="inpAngle"
+            type="range"
+            name="angle"
+            min="0"
+            max="360"
+            value={ref.current.angle}
+            step="1"
+            onChange={angleHandleChange}
+          />
+          <label htmlFor="angle">{`angle ${ref.current.angle}deg`}</label>
+          <input
+            className="compration"
+            type="range"
+            name="compration"
+            min="0.1"
+            max="3"
+            step="0.1"
+            value={ref.current.compration}
+            onChange={comprationHandleChange}
+          />
+          <label htmlFor="compration">{`compration ${compration}`}</label>
         </div>
       </div>
       <div className="circle" ref={circleBlockRef}>
