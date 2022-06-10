@@ -142,12 +142,9 @@ function App() {
   return (
     <div className="App">
       <div className="inpForm">
-        <input
-          className="inpText"
-          type="text"
-          value={textInp}
-          onChange={handleInput}
-        />
+        <div className="inpText">
+          <input type="text" value={textInp} onChange={handleInput} />
+        </div>
 
         <div>
           <div
