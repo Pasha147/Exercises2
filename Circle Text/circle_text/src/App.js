@@ -29,8 +29,9 @@ function App() {
     ref1.current.circlWidth = width;
     ref1.current.circleHeight = height;
 
-    changeLibText(textInp.split(""));
-    setCurChar(textInp);
+    // const textInp = "Я люблю УКРАЇНУ і Пашу.";
+    // changeLibText(textInp.split(""));
+    // setCurChar(textInp);
   }, []);
 
   function changeLibText(text) {
@@ -44,7 +45,8 @@ function App() {
       if (!curCharAbc) {
         charBlockRef.current.innerText = e === " " ? `\u00A0 ` : e;
         let width =
-          charBlockRef.current.getBoundingClientRect().width * compration;
+          charBlockRef.current.getBoundingClientRect().width *
+          ref.current.compration;
         let height = charBlockRef.current.getBoundingClientRect().height;
         charBlockRef.current.innerText = "";
         abcRef.push({ char: e, width: width, height: height });
@@ -53,6 +55,7 @@ function App() {
       textRef.push(curCharAbc);
     });
     angels();
+    // console.log("+++", ref.current.compration, " ", compration);
   }
 
   //==
@@ -131,6 +134,7 @@ function App() {
   const comprationHandleChange = (e) => {
     let curCompr = Number(e.target.value);
     ref.current.compration = curCompr;
+
     if (!ref.current.Proportionately) {
       ref.current.abc = [];
       let chars = ref.current.text.map((e) => e.char);
