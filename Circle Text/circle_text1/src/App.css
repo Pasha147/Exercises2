@@ -5,6 +5,10 @@
   color: white;
 }
 
+p{
+  margin: 0;
+}
+
 .App-header {
   
   /* min-height: 5vh; */
@@ -31,3 +35,33 @@ main>div{
   /* font-size: 2rem; */
 }
 
+.LeftSide{
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+  min-width: 15rem;
+}
+
+.Control{
+  border: white 1px solid;
+    margin: 0.25rem;
+  background-color: #222b41;
+}
+.Control label{
+ display: block;
+}
+.Control input{
+  width: 90%;
+  margin: 0.25rem;
+}
+.controlCheck{
+  text-align: start;
+}
+.controlCheck input{
+  width: min-content;
+  display: inline-block;
+}
+.controlCheck label {
+width: min-content;
+  display: inline-block;
+}

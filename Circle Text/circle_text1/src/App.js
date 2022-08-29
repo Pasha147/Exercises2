@@ -5,6 +5,11 @@ import CircleComp from "./components/CircleComp";
 function App() {
   const [state, setState] = useState({
     textInput: "",
+    propor: false,
+    radius: 50,
+    fontSize: 10,
+    angle: 0,
+    compration: 1,
   });
 
   const handleInput = (e) => {
@@ -12,21 +17,100 @@ function App() {
     setState({ ...state, textInput: text });
   };
 
+  const proportionately = () => {};
+  const radHandleChange = (e) => {
+    setState({ ...state, radius: Number(e.target.value) });
+  };
+  const fontHandleChange = (e) => {
+    setState({ ...state, fontSize: Number(e.target.value) });
+  };
+  const angleHandleChange = (e) => {
+    setState({ ...state, angle: Number(e.target.value) });
+  };
+  const comprationHandleChange = (e) => {
+    setState({ ...state, compration: Number(e.target.value) });
+  };
+
   return (
     <div className="App">
       <header className="App-header">
         <h1>Circulus text</h1>
-        {/* <p>ddd</p> */}
       </header>
       <main>
-        <div className="Control">
-          <p>control</p>
-          <div className="inpText">
-            <input type="text" value={state.textInput} onChange={handleInput} />
+        <div className="LeftSide">
+          <p>Controls</p>
+          <div className="Control">
+            <label htmlFor="text">{`Text`}</label>
+            <input
+              name="text"
+              type="text"
+              value={state.textInput}
+              onChange={handleInput}
+            />
           </div>
-          <p>{`${state.textInput}`}</p>
+          <div className="Control controlCheck">
+            <input
+              type="checkbox"
+              name="proportionately"
+              onChange={proportionately}
+              defaultChecked={state.propor}
+            />
+            <label htmlFor="roportionately">{`Proportionately`}</label>
+          </div>
+          <div className="Control">
+            <label htmlFor="radius">{`Radius ${state.radius}px`}</label>
+            <input
+              className="inp"
+              type="range"
+              name="radius"
+              min="2"
+              max="400"
+              value={state.radius}
+              step="1"
+              onChange={radHandleChange}
+            />
+          </div>
+          <div className="Control">
+            <label htmlFor="fontSize">{`Font size ${state.fontSize}px`}</label>
+            <input
+              className="inp"
+              type="range"
+              name="fontSize"
+              min="2"
+              max="100"
+              step="1"
+              value={state.fontSize}
+              onChange={fontHandleChange}
+            />
+          </div>
+          <div className="Control">
+            <label htmlFor="angle">{`Radius ${state.angle}deg`}</label>
+            <input
+              className="inp"
+              type="range"
+              name="angle"
+              min="0"
+              max="360"
+              value={state.angle}
+              step="1"
+              onChange={angleHandleChange}
+            />
+          </div>
+          <div className="Control">
+            <label htmlFor="compration">{`Compration ${state.compration}`}</label>
+            <input
+              className="inp"
+              type="range"
+              name="compration"
+              min="0.1"
+              max="3"
+              value={state.compration}
+              step="0.1"
+              onChange={comprationHandleChange}
+            />
+          </div>
         </div>
-        <CircleComp text={state.textInput} />
+        <CircleComp text={state} />
       </main>
     </div>
   );
