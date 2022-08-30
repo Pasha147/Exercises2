@@ -47,8 +47,11 @@ export default function CircleComp(props) {
       <p>{`text=${state.text}`}</p>
       <p>{`width=${state.width}`}</p>
       <p>{`length=${state.length}`}</p>
-      <p>{`radius=${props.text.radius}`}</p>
-      <p>{`fontSize=${props.text.fontSize}`}</p>
+      <p>{`Proportionately=${props.text.propor}`}</p>
+      <p>{`Radius=${props.text.radius}`}</p>
+      <p>{`FontSize=${props.text.fontSize}`}</p>
+      <p>{`Angle=${props.text.angle}`}</p>
+      <p>{`Compration=${props.text.compration}`}</p>
     </div>
   );
 }

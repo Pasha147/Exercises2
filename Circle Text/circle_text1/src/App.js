@@ -17,7 +17,9 @@ function App() {
     setState({ ...state, textInput: text });
   };
 
-  const proportionately = () => {};
+  const proportionately = () => {
+    setState({ ...state, propor: !state.propor });
+  };
   const radHandleChange = (e) => {
     setState({ ...state, radius: Number(e.target.value) });
   };
@@ -84,7 +86,7 @@ function App() {
             />
           </div>
           <div className="Control">
-            <label htmlFor="angle">{`Radius ${state.angle}deg`}</label>
+            <label htmlFor="angle">{`Angle ${state.angle}deg`}</label>
             <input
               className="inp"
               type="range"
