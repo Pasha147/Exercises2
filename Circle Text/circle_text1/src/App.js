@@ -12,6 +12,31 @@ function App() {
     compration: 1,
   });
 
+  const controls = [
+    {
+      className: "inp",
+      type: "range",
+      name: "radius",
+      min: "2",
+      max: "400",
+      value: state.radius,
+      step: "1",
+      curValue: state.radius,
+      labelEnd: `px`,
+    },
+    {
+      className: "inp",
+      type: "range",
+      name: "fontSize",
+      min: "2",
+      max: "100",
+      value: state.fontSize,
+      step: "1",
+      curValue: state.fontSize,
+      labelEnd: `px`,
+    },
+  ];
+
   const handleInput = (e) => {
     let text = e.target.value;
     setState({ ...state, textInput: text });
@@ -31,6 +56,9 @@ function App() {
   };
   const comprationHandleChange = (e) => {
     setState({ ...state, compration: Number(e.target.value) });
+  };
+  const handleChangeControls = (e) => {
+    console.log(e.target.name);
   };
 
   return (
@@ -111,6 +139,25 @@ function App() {
               onChange={comprationHandleChange}
             />
           </div>
+          {controls.map((item, i) => {
+            return (
+              <div key={item.name} className="Control">
+                <label
+                  htmlFor={item.name}
+                >{`${item.name} ${item.curValue} ${item.labelEnd}`}</label>
+                <input
+                  className={item.className}
+                  type={item.type}
+                  name={item.name}
+                  min={item.min}
+                  max={item.max}
+                  value={item.value}
+                  step={item.step}
+                  onChange={(e) => handleChangeControls(e)}
+                />
+              </div>
+            );
+          })}
         </div>
         <CircleComp text={state} />
       </main>
