@@ -22,8 +22,8 @@ p{
 
 main{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: left;
+  align-items: flex-start;
 
 }
 main>div{
@@ -65,3 +65,4 @@ main>div{
 width: min-content;
   display: inline-block;
 }
+

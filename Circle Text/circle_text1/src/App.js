@@ -6,8 +6,8 @@ function App() {
   const [state, setState] = useState({
     textInput: "",
     propor: false,
-    radius: 50,
-    fontSize: 10,
+    radius: 100,
+    fontSize: 40,
     angle: 0,
     compration: 1,
   });
@@ -16,7 +16,7 @@ function App() {
     {
       name: "radius",
       min: "2",
-      max: "400",
+      max: "250",
       step: "1",
       lable: ["Radius", `px`],
     },
@@ -78,12 +78,12 @@ function App() {
             <label htmlFor="roportionately">{`Proportionately`}</label>
           </div>
 
-          {controls.map((item, i) => {
+          {controls.map((item) => {
             return (
               <div key={item.name} className="Control">
-                <label htmlFor={item.name}>{`${item.lable[0]} ${
-                  state[item.name]
-                } ${item.lable[1]}`}</label>
+                <label htmlFor={item.name}>
+                  {`${item.lable[0]} ${state[item.name]} ${item.lable[1]}`}
+                </label>
                 <input
                   className="inp"
                   type="range"
