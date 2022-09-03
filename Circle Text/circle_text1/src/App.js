@@ -15,15 +15,15 @@ function App() {
   const controls = [
     {
       name: "radius",
-      min: "2",
-      max: "250",
+      min: "1",
+      max: "400",
       step: "1",
       lable: ["Radius", `px`],
     },
     {
       name: "fontSize",
-      min: "2",
-      max: "100",
+      min: "1",
+      max: "200",
       step: "1",
       lable: ["Font size", `px`],
     },

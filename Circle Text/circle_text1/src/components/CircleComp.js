@@ -12,7 +12,7 @@ export default function CircleComp(props) {
     abc: [],
     chars: [],
     radius: Number(props.text.radius),
-    widthCircleBlock: props.text.radius * 2,
+    widthCircleBlock: Number(props.text.radius) * 2,
     fontSize: Number(props.text.fontSize),
   });
   const [state, setState] = useState({ ...ref.current });
@@ -32,8 +32,8 @@ export default function CircleComp(props) {
         let height = charBlockRef.current.getBoundingClientRect().height;
         charBlockRef.current.innerText = "";
 
-        // width = (fontSize * width) / height;
-        // height = fontSize;
+        width = (fontSize * width) / height;
+        height = fontSize;
 
         ref.current.abc.push({
           char: char,
@@ -52,13 +52,6 @@ export default function CircleComp(props) {
       const widthChar = charInAbc.widthChar;
       // const angleWidthChar = charInAbc.angleWidthChar;
       widthTotal = widthTotal + widthChar;
-
-      // if (i == 0) {
-      //   angleChar = 0;
-      // } else {
-      //   angleChar =
-      //     angleChar + 0.5 * (chars[i - 1].angleWidthChar + angleWidthChar);
-      // }
       return {
         char: char,
         // angleChar: angleChar,
@@ -67,7 +60,7 @@ export default function CircleComp(props) {
         angleWidthChar: charInAbc.angleWidthChar,
       };
     });
-
+    //Change chars===========================
     let angleChar = 0;
     chars.forEach((item, i) => {
       if (i === 0) {
@@ -91,43 +84,85 @@ export default function CircleComp(props) {
 
     setState({ ...ref.current });
 
-    console.log(ref.current);
+    // console.log(ref.current);
   }, [props.text.textInput]);
 
+  //Radius has changed
   useEffect(() => {
     ref.current.radius = Number(props.text.radius);
     //Change width and height of CircleBlock=====================
     if (ref.current.chars.length > 0) {
       ref.current.widthCircleBlock =
-        (ref.current.radius + ref.current.chars[0].heightChar) * 2;
+        (ref.current.radius + ref.current.fontSize) * 2;
 
-      //Change ABC=========================================
+      //Change angleWidthChar in ABC=========================================
       ref.current.abc = ref.current.abc.map((item) => {
         item.angleWidthChar =
           (Math.atan((0.5 * item.widthChar) / ref.current.radius) * 360) /
           Math.PI;
         return item;
       });
-
-      //Change Chars===============================
+      //Change angleChar in chars=========================================
       let angleChar = 0;
-      ref.current.chars = ref.current.chars.map((char) => {
-        const charInAbc = ref.current.abc.find((el) => el.char === char.char);
-        angleChar = angleChar + charInAbc.angleWidthChar;
-        return { ...char, angleChar: angleChar };
+      let chars = ref.current.chars;
+      chars.forEach((item, i) => {
+        const charInAbc = ref.current.abc.find((el) => el.char === item.char);
+        chars[i].angleWidthChar = charInAbc.angleWidthChar;
+        if (i === 0) {
+          angleChar = 0;
+        } else {
+          angleChar =
+            angleChar +
+            0.5 * (chars[i - 1].angleWidthChar + item.angleWidthChar);
+        }
+        chars[i].angleChar = angleChar;
       });
     } else {
       ref.current.widthCircleBlock = ref.current.radius * 2;
     }
-
-    //===========================================
-    // console.log(ref.current.abc);
-
     setState({ ...ref.current });
   }, [props.text.radius]);
 
+  // fontSize has changed
   useEffect(() => {
     ref.current.fontSize = Number(props.text.fontSize);
+
+    //Change width and height of CircleBlock=====================
+    if (ref.current.chars.length > 0) {
+      ref.current.widthCircleBlock =
+        (ref.current.radius + ref.current.fontSize) * 2;
+      //Change width height and angleWidthChar in ABC=========================================
+      ref.current.abc.forEach((item, i) => {
+        const scale = ref.current.fontSize / item.heightChar;
+        ref.current.abc[i].widthChar = item.widthChar * scale;
+        ref.current.abc[i].heightChar = ref.current.fontSize;
+        ref.current.abc[i].angleWidthChar =
+          (Math.atan((0.5 * item.widthChar) / ref.current.radius) * 360) /
+          Math.PI;
+      });
+
+      //Change width height and charAngle in chars
+      let angleChar = 0;
+      let chars = ref.current.chars;
+      chars.forEach((item, i) => {
+        const charInAbc = ref.current.abc.find((el) => el.char === item.char);
+        ref.current.chars[i].widthChar = charInAbc.widthChar;
+        ref.current.chars[i].heightChar = charInAbc.heightChar;
+        ref.current.chars[i].angleWidthChar = charInAbc.angleWidthChar;
+        if (i === 0) {
+          angleChar = 0;
+        } else {
+          angleChar =
+            angleChar +
+            0.5 *
+              (ref.current.chars[i - 1].angleWidthChar +
+                charInAbc.angleWidthChar);
+        }
+        ref.current.chars[i].angleChar = angleChar;
+      });
+    } else {
+      ref.current.widthCircleBlock = ref.current.radius * 2;
+    }
 
     setState({ ...ref.current });
   }, [props.text.fontSize]);
@@ -163,7 +198,7 @@ export default function CircleComp(props) {
               className="charCirc"
               key={ind}
               style={{
-                fontSize: `${state.fontSize}px`,
+                fontSize: `${state.fontSize * 0.75}px`,
                 position: "absolute",
                 top: `${0}px`,
                 left: `${state.radius + state.chars[0].heightChar}px`,
