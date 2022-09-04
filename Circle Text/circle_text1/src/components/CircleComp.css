@@ -10,5 +10,6 @@
     background: rgba(48, 35, 47, 0.527);
 }
 .charCirc{
+    position: absolute;
     background: rgba(2, 70, 104, 0.253);
 }

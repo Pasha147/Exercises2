@@ -10,6 +10,8 @@ function App() {
     fontSize: 40,
     angle: 0,
     compration: 1,
+    rotate: 0,
+    rotate1: 0,
   });
 
   const controls = [
@@ -36,10 +38,24 @@ function App() {
     },
     {
       name: "compration",
-      min: "0.1",
+      min: "0.025",
       max: "3",
-      step: "0.1",
+      step: "0.025",
       lable: ["Compration", ` `],
+    },
+    {
+      name: "rotate",
+      min: "0",
+      max: "360",
+      step: "1",
+      lable: ["Rotate", `deg`],
+    },
+    {
+      name: "rotate1",
+      min: "0",
+      max: "100",
+      step: "1",
+      lable: ["Rotate1 ", `%`],
     },
   ];
 
