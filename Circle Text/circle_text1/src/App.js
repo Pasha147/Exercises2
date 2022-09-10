@@ -14,6 +14,17 @@ function App() {
     rotate1: 0,
   });
 
+  const state1 = {
+    textInput: "Dadslfkjs;fg as;dflgs dfg ;sdfg ",
+    propor: false,
+    radius: 100,
+    fontSize: 40,
+    angle: 0,
+    compration: 1,
+    rotate: 0,
+    rotate1: 0,
+  };
+
   const controls = [
     {
       name: "radius",
@@ -70,7 +81,19 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Circulus text</h1>
+        <CircleComp
+          className="CircHeader"
+          text={{
+            textInput: "Circulus text",
+            propor: false,
+            radius: 1000,
+            fontSize: 100,
+            angle: 339,
+            compration: 2,
+            rotate: 0,
+            rotate1: 0,
+          }}
+        />
       </header>
       <main>
         <div className="LeftSide">
