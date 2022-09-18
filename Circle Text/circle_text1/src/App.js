@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./App.css";
 import CircleComp from "./components/CircleComp";
+import CircleCompC from "./components/CircleCompC";
 
 function App() {
   const [state, setState] = useState({
@@ -14,16 +15,16 @@ function App() {
     rotate1: 0,
   });
 
-  const state1 = {
-    textInput: "Dadslfkjs;fg as;dflgs dfg ;sdfg ",
-    propor: false,
-    radius: 100,
-    fontSize: 40,
-    angle: 0,
-    compration: 1,
-    rotate: 0,
-    rotate1: 0,
-  };
+  // const state1 = {
+  //   textInput: "Dadslfkjs;fg as;dflgs dfg ;sdfg ",
+  //   propor: false,
+  //   radius: 100,
+  //   fontSize: 40,
+  //   angle: 0,
+  //   compration: 1,
+  //   rotate: 0,
+  //   rotate1: 0,
+  // };
 
   const controls = [
     {
@@ -138,6 +139,7 @@ function App() {
           })}
         </div>
         <CircleComp text={state} />
+        <CircleCompC text={state} />
       </main>
     </div>
   );

@@ -3,7 +3,7 @@ import "./CircleComp.css";
 
 import { useRef } from "react";
 
-export default function CircleComp(props) {
+export default function CircleCompC(props) {
   const charBlockRef = useRef(null);
   const ref = useRef({
     text: props.text.textInput,
@@ -97,16 +97,16 @@ export default function CircleComp(props) {
     ref.current.width = widthTotal;
     ref.current.length = ref.current.text.length;
 
-    // ref.current.chars = ref.current.chars.map((item) => {
-    //   const radMax = ref.current.radius + ref.current.chars[0].heightChar;
-    //   const cosa = Math.cos((item.angleChar * Math.PI) / 180);
-    //   const sina = Math.sin((item.angleChar * Math.PI) / 180);
-    //   const top = radMax - radMax * cosa - item.widthChar * 0.5 * sina;
-    //   const left = radMax + radMax * sina - item.widthChar * 0.5 * cosa;
+    ref.current.chars = ref.current.chars.map((item) => {
+      const radMax = ref.current.radius + ref.current.chars[0].heightChar;
+      const cosa = Math.cos((item.angleChar * Math.PI) / 180);
+      const sina = Math.sin((item.angleChar * Math.PI) / 180);
+      const top = radMax - radMax * cosa - item.widthChar * 0.5 * sina;
+      const left = radMax + radMax * sina - item.widthChar * 0.5 * cosa;
 
-    //   return { ...item, left: left, top: top };
-    // });
-    // console.log(ref.current.chars);
+      return { ...item, left: left, top: top };
+    });
+    console.log(ref.current.chars);
     setState({ ...ref.current });
 
     // console.log(ref.current);
@@ -305,7 +305,7 @@ export default function CircleComp(props) {
           height: `${state.widthCircleBlock}px`,
         }}
       >
-        {state.chars.map((item, ind) => {
+        {/* {state.chars.map((item, ind) => {
           return (
             <div
               className="charCirc"
@@ -343,8 +343,8 @@ export default function CircleComp(props) {
               </div>
             </div>
           );
-        })}
-        {/* {state.chars.map((item, ind) => {
+        })} */}
+        {state.chars.map((item, ind) => {
           return (
             <div
               className="charCirc"
@@ -357,12 +357,13 @@ export default function CircleComp(props) {
                 top: `${item.top}px`,
                 transformOrigin: "top left",
                 transform: `rotate(${item.angleChar}deg) `,
+                fontSize: `${state.fontSize * 0.75}px`,
               }}
             >
               {item.char}
             </div>
           );
-        })} */}
+        })}
       </div>
     </div>
   );
