@@ -99,10 +99,13 @@ export default function CircleCompC(props) {
 
     ref.current.chars = ref.current.chars.map((item) => {
       const radMax = ref.current.radius + ref.current.chars[0].heightChar;
+      const radCentr = ref.current.radius + 0.5 * ref.current.fontSize;
       const cosa = Math.cos((item.angleChar * Math.PI) / 180);
       const sina = Math.sin((item.angleChar * Math.PI) / 180);
-      const top = radMax - radMax * cosa - item.widthChar * 0.5 * sina;
-      const left = radMax + radMax * sina - item.widthChar * 0.5 * cosa;
+      // const top = radMax - radMax * cosa - item.widthChar * 0.5 * sina;
+      // const left = radMax + radMax * sina - item.widthChar * 0.5 * cosa;
+      const top = radCentr * (1 - cosa);
+      const left = radMax + radCentr * sina - item.widthChar * 0.5;
 
       return { ...item, left: left, top: top };
     });
@@ -305,7 +308,7 @@ export default function CircleCompC(props) {
           height: `${state.widthCircleBlock}px`,
         }}
       >
-        {/* {state.chars.map((item, ind) => {
+        {state.chars.map((item, ind) => {
           return (
             <div
               className="charCirc"
@@ -343,7 +346,7 @@ export default function CircleCompC(props) {
               </div>
             </div>
           );
-        })} */}
+        })}
         {state.chars.map((item, ind) => {
           return (
             <div
@@ -355,8 +358,9 @@ export default function CircleCompC(props) {
                 height: `${item.heightChar}px`,
                 left: `${item.left}px`,
                 top: `${item.top}px`,
-                transformOrigin: "top left",
-                transform: `rotate(${item.angleChar}deg) `,
+                rotate: `${item.angleChar}deg`,
+                // transformOrigin: "top left",
+                // transform: `rotate(${item.angleChar + 180}deg) `,
                 fontSize: `${state.fontSize * 0.75}px`,
               }}
             >
