@@ -7,56 +7,10 @@
     <title>Document</title>
   </head>
   <style>
-    body {
-margin: 0;
-padding: 0;
-    }
-.app {
-  height: 100vh;
-  background: red;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 1rem 2rem;
-  min-width: 320px;
-}
-header {
-  background: green;
-  width: 50%;
-  margin: 0 auto 1rem auto;
-  text-align: center;
-
-}
-h1 {
-  margin: 0;
-}
-main {
-  background: green;
-  width: 25%;
-  height: 25%;
-min-width: 5rem;
-min-height: 5rem;
-/* margin: 25% auto 0 auto; */
-}
-
-
-
-
-
-
-
-
-
-
-
-
-    /* .auto {
-      background: purple;
-    }
-    body {
+    /* body {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      border: 1px solid green;
       height: 100vh;
       width: 100vw;
       display: flex;
@@ -69,45 +23,26 @@ min-height: 5rem;
     }
     button {
       margin: 0.25rem;
-      background: rgb(101, 204, 202);
-      text-shadow: rgb(255, 208, 0);
     }
     .app {
       background: rgb(237, 205, 252);
       border: 1px solid red;
       padding: 1rem;
       width: 100px;
-      height: 200px;
       text-align: center;
     } */
   </style>
   <body>
     <div class="app">
-      <header>
-        <h1>
-          Hello Denik!!!
-        </h1>
-      </header>
+      <header>Hello Denik!!!</header>
       <main>
         <span id="span">0</span>
         <button id="clickBtn">Clilck me</button>
         <button id="resetBtn">Reset</button>
-      </main> 
-      <div class="block1">
-  block_1
-      </div>
-      <div class="block2">
-        block_2
-      </div>
-      <div class="block3">
-        block_3
-      </div>
+      </main>
     </div>
   </body>
   <script>
-    // const myname = prompt('напишите мое имя')
-    // const yourname = prompt('напишите имя вашего друга')
-    // alert('Здраствуйте' + ' ' + myname + ' ' + yourname)
     let i = 0;
     const clickBtn = document.getElementById("clickBtn");
     const resetBtn = document.getElementById("resetBtn");
@@ -115,14 +50,14 @@ min-height: 5rem;
     clickBtn.addEventListener("click", (event) => {
       i = i + 1;
       span.textContent = i;
-    })
-    span.addEventListener("mousemove", (event) => {
-      i = i * 0
-      span.textContent = i
     });
-    resetBtn.addEventListener("click", (event) => {
+    resetBtn.addEventListener("mousemove", (event) => {
       i = 0;
       span.textContent = 0;
+    });
+    span.addEventListener("dblclick", (e) => {
+      i = i * 10;
+      span.textContent = i;
     });
   </script>
 </html>

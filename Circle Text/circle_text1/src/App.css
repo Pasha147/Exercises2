@@ -32,9 +32,11 @@ top: 0;
 }
 
 main{
+  width: 100%;
   display: flex;
   justify-content: left;
   align-items: flex-start;
+  flex-wrap: wrap;
 
 }
 main>div{
