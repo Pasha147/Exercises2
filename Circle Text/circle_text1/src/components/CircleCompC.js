@@ -109,7 +109,7 @@ export default function CircleCompC(props) {
 
       return { ...item, left: left, top: top };
     });
-    console.log(ref.current.chars);
+    // console.log(ref.current.chars);
     setState({ ...ref.current });
 
     // console.log(ref.current);

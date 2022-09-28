@@ -1,17 +1,107 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { useCallback } from "react";
 import "./CircleCompD.css";
-
-import { useRef } from "react";
 
 export default function CircleCompD(props) {
   const charBlockRef = useRef(null);
-  const text = props.text.textInput;
+
+  let text = props.text.textInput;
+  let radius = Number(props.text.radius);
   const ref = useRef({
     abc: [],
   });
-  // if (text) {
-  //   let chars = ref.current.text.split("");
+
+  const [state, setState] = useState({
+    text: "",
+    length: props.text.textInput.length,
+    width: 0,
+    abc: [],
+    chars: [],
+    radius: Number(props.text.radius),
+    widthCircleBlock: Number(props.text.radius) * 2,
+    fontSize: Number(props.text.fontSize),
+    angle: Number(props.text.angle),
+    propor: props.text.propor,
+  });
+
+  useEffect(() => {
+    changeAbc();
+    changeChars();
+  }, [text]);
+
+  // if (charBlockRef.current) {
+  //   changeAbc(text);
   // }
+  // if (ref.current.abc.length > 0) {
+  //   changeChars(text);
+  // }
+
+  // useEffect(() => {
+  //   setState((s) => {
+  //     return { ...s };
+  //   });
+  // }, []);
+
+  // useMemo(() => {
+  //   if (charBlockRef.current) {
+  //     changeAbc(text);
+  //     // console.log(ref.current.abc);
+  //   } else {
+  //     // console.log("000---");
+  //   }
+  // }, [text]);
+
+  // useMemo(() => {
+  //   let radius = Number(props.text.radius) + 1;
+
+  //   // radius = radius * 2; // console.log("rad", radius);
+  // }, [props.text.radius]);
+
+  function changeChars() {
+    setState((s) => {
+      return { ...s, text: ref.current.abc.length };
+    });
+  }
+
+  function changeAbc() {
+    const textArr = text.split("");
+    //change abc library and determining width and height
+    const newabc = [...new Set(textArr)];
+    newabc.forEach((char) => {
+      if (!ref.current.abc.find((el) => el.char === char)) {
+        // if (charBlockRef.current) {
+        charBlockRef.current.innerText = char === " " ? `\u00A0 ` : char;
+        let width = charBlockRef.current.getBoundingClientRect().width;
+        let height = charBlockRef.current.getBoundingClientRect().height;
+        charBlockRef.current.innerText = "";
+        ref.current.abc.push({
+          char: char,
+          widthChar: width,
+          heightChar: height,
+        });
+        // }
+      }
+    });
+    //========================================
+  }
+  // useEffect(() => {
+  //   // console.log("first--", ref.current.abc);
+  //   changeAbc(text);
+  //   setState((s) => {
+  //     return { ...s };
+  //   });
+  //   // console.log("first--", ref.current.abc);
+  // }, []);
+
+  // useEffect(() => {
+  //   console.log("first--");
+  //   charBlockRef.current.innerText = "C";
+  //   let width = charBlockRef.current.getBoundingClientRect().width;
+  //   console.log("w=", width);
+  //   setState((s) => {
+  //     return { ...s, text: width };
+  //   });
+  // }, []);
 
   // const ref = useRef({
   //   text: props.text.textInput,
@@ -25,34 +115,15 @@ export default function CircleCompD(props) {
   //   angle: Number(props.text.angle),
   //   propor: props.text.propor,
   // });
-  const [state, setState] = useState({
-    text: props.text.textInput,
-    length: props.text.textInput.length,
-    width: 0,
-    abc: [],
-    chars: [],
-    radius: Number(props.text.radius),
-    widthCircleBlock: Number(props.text.radius) * 2,
-    fontSize: Number(props.text.fontSize),
-    angle: Number(props.text.angle),
-    propor: props.text.propor,
-  });
 
   return (
     <div className="circleTextComp">
       <span className="charBlockRef" ref={charBlockRef}></span>
-      {
-        <span>{text}</span>
-        /* {/* <span>{props.text.textInput}</span>
-      <p>{`text=${state.text}`}</p> 
-      <p>{`width=${state.width}`}</p>
-      <p>{`length=${state.length}`}</p>
-      <p>{`Proportionately=${props.text.propor}`}</p>
-      <p>{`Radius=${props.text.radius}`}</p>
-      <p>{`FontSize=${props.text.fontSize}`}</p>
-      <p>{`Angle=${props.text.angle}`}</p>
-      <p>{`Compration=${props.text.compration}`}</p> */
-      }
+
+      <div>{text}</div>
+      <div>{radius}</div>
+      <div>{state.text}</div>
+
       <div
         className="circleText"
         style={{
@@ -66,53 +137,12 @@ export default function CircleCompD(props) {
               className="charCirc"
               key={ind}
               style={{
-                // position: "absolute",
-                top: `${0}px`,
-                left: `${state.radius + state.fontSize}px`,
-                width: `${item.widthChar}px`,
-                height: `${item.heightChar}px`,
-
-                transformOrigin: `${item.widthChar / 2}px ${
-                  item.heightChar + state.radius
-                }px`,
-
-                transform: `translate(${
-                  -item.widthChar / 2
-                }px, ${0}px) rotate(${item.angleChar}deg) `,
-              }}
-            >
-              <div
-                className="charCircIn"
-                style={{
-                  position: "absolute",
-                  fontSize: `${state.fontSize * 0.75}px`,
-                  transformOrigin: `${item.widthChar / 2}px ${
-                    item.heightChar / 2
-                  }px`,
-                  transform: `rotate(${
-                    state.rotate - (item.angleChar * state.rotate1) / 100
-                  }deg)`,
-                }}
-              >
-                {item.char}
-              </div>
-            </div>
-          );
-        })}
-        {state.chars.map((item, ind) => {
-          return (
-            <div
-              className="charCirc"
-              key={ind}
-              style={{
                 color: "red",
                 width: `${item.widthChar}px`,
                 height: `${item.heightChar}px`,
                 left: `${item.left}px`,
                 top: `${item.top}px`,
                 rotate: `${item.angleChar}deg`,
-                // transformOrigin: "top left",
-                // transform: `rotate(${item.angleChar + 180}deg) `,
                 fontSize: `${state.fontSize * 0.75}px`,
               }}
             >

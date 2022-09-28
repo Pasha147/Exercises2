@@ -6,7 +6,7 @@ import CircleCompD from "./components/CircleCompD";
 
 function App() {
   const [state, setState] = useState({
-    textInput: "",
+    textInput: "Ci",
     propor: false,
     radius: 100,
     fontSize: 40,
