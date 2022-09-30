@@ -24,10 +24,10 @@ export default function CircleCompD(props) {
     propor: props.text.propor,
   });
 
-  useEffect(() => {
-    changeAbc();
-    changeChars();
-  }, [text]);
+  // useEffect(() => {
+  //   changeAbc();
+  //   changeChars();
+  // }, [text]);
 
   // if (charBlockRef.current) {
   //   changeAbc(text);
@@ -36,11 +36,13 @@ export default function CircleCompD(props) {
   //   changeChars(text);
   // }
 
-  // useEffect(() => {
-  //   setState((s) => {
-  //     return { ...s };
-  //   });
-  // }, []);
+  useEffect(() => {
+    changeAbc();
+
+    setState((s) => {
+      return { ...s };
+    });
+  }, [text]);
 
   // useMemo(() => {
   //   if (charBlockRef.current) {
@@ -57,10 +59,13 @@ export default function CircleCompD(props) {
   //   // radius = radius * 2; // console.log("rad", radius);
   // }, [props.text.radius]);
 
-  function changeChars() {
-    setState((s) => {
-      return { ...s, text: ref.current.abc.length };
-    });
+  function addChars() {
+    let chars = [];
+    if (ref.current.abc.length > 0) {
+      chars = [...ref.current.abc];
+    }
+
+    return chars;
   }
 
   function changeAbc() {
@@ -131,29 +136,37 @@ export default function CircleCompD(props) {
           height: `${state.widthCircleBlock}px`,
         }}
       >
-        {state.chars.map((item, ind) => {
-          return (
-            <div
-              className="charCirc"
-              key={ind}
-              style={{
-                color: "red",
-                width: `${item.widthChar}px`,
-                height: `${item.heightChar}px`,
-                left: `${item.left}px`,
-                top: `${item.top}px`,
-                rotate: `${item.angleChar}deg`,
-                fontSize: `${state.fontSize * 0.75}px`,
-              }}
-            >
-              {item.char}
-            </div>
-          );
+        {addChars().map((item) => {
+          return <div>{`${item.char} ${item.widthChar}`}</div>;
         })}
       </div>
     </div>
   );
 }
+
+/*
+ {
+   state.chars.map((item, ind) => {
+     return (
+       <div
+         className="charCirc"
+         key={ind}
+         style={{
+           color: "red",
+           width: `${item.widthChar}px`,
+           height: `${item.heightChar}px`,
+           left: `${item.left}px`,
+           top: `${item.top}px`,
+           rotate: `${item.angleChar}deg`,
+           fontSize: `${state.fontSize * 0.75}px`,
+         }}
+       >
+         {item.char}
+       </div>
+     );
+   });
+ }
+*/
 
 // useEffect(() => {
 //   ref.current.text = props.text.textInput;
