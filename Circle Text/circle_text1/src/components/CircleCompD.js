@@ -24,57 +24,28 @@ export default function CircleCompD(props) {
     propor: props.text.propor,
   });
 
-  // useEffect(() => {
-  //   changeAbc();
-  //   changeChars();
-  // }, [text]);
-
-  // if (charBlockRef.current) {
-  //   changeAbc(text);
-  // }
-  // if (ref.current.abc.length > 0) {
-  //   changeChars(text);
-  // }
-
   useEffect(() => {
-    changeAbc();
+    changeAbc(text);
 
     setState((s) => {
       return { ...s };
     });
   }, [text]);
 
-  // useMemo(() => {
-  //   if (charBlockRef.current) {
-  //     changeAbc(text);
-  //     // console.log(ref.current.abc);
-  //   } else {
-  //     // console.log("000---");
-  //   }
-  // }, [text]);
-
-  // useMemo(() => {
-  //   let radius = Number(props.text.radius) + 1;
-
-  //   // radius = radius * 2; // console.log("rad", radius);
-  // }, [props.text.radius]);
-
-  function addChars() {
+  const addChars = () => {
     let chars = [];
-    if (ref.current.abc.length > 0) {
-      chars = [...ref.current.abc];
-    }
+
+    chars = [...ref.current.abc, { char: text[0], widthChar: 5 }];
 
     return chars;
-  }
+  };
 
-  function changeAbc() {
+  function changeAbc(text) {
     const textArr = text.split("");
     //change abc library and determining width and height
     const newabc = [...new Set(textArr)];
     newabc.forEach((char) => {
       if (!ref.current.abc.find((el) => el.char === char)) {
-        // if (charBlockRef.current) {
         charBlockRef.current.innerText = char === " " ? `\u00A0 ` : char;
         let width = charBlockRef.current.getBoundingClientRect().width;
         let height = charBlockRef.current.getBoundingClientRect().height;
@@ -84,42 +55,9 @@ export default function CircleCompD(props) {
           widthChar: width,
           heightChar: height,
         });
-        // }
       }
     });
-    //========================================
   }
-  // useEffect(() => {
-  //   // console.log("first--", ref.current.abc);
-  //   changeAbc(text);
-  //   setState((s) => {
-  //     return { ...s };
-  //   });
-  //   // console.log("first--", ref.current.abc);
-  // }, []);
-
-  // useEffect(() => {
-  //   console.log("first--");
-  //   charBlockRef.current.innerText = "C";
-  //   let width = charBlockRef.current.getBoundingClientRect().width;
-  //   console.log("w=", width);
-  //   setState((s) => {
-  //     return { ...s, text: width };
-  //   });
-  // }, []);
-
-  // const ref = useRef({
-  //   text: props.text.textInput,
-  //   length: props.text.textInput.length,
-  //   width: 0,
-  //   abc: [],
-  //   chars: [],
-  //   radius: Number(props.text.radius),
-  //   widthCircleBlock: Number(props.text.radius) * 2,
-  //   fontSize: Number(props.text.fontSize),
-  //   angle: Number(props.text.angle),
-  //   propor: props.text.propor,
-  // });
 
   return (
     <div className="circleTextComp">
@@ -136,13 +74,72 @@ export default function CircleCompD(props) {
           height: `${state.widthCircleBlock}px`,
         }}
       >
-        {addChars().map((item) => {
-          return <div>{`${item.char} ${item.widthChar}`}</div>;
+        {addChars().map((item, ind) => {
+          return <div key={ind}>{`${item.char} ${item.widthChar}`}</div>;
         })}
       </div>
     </div>
   );
 }
+
+// useEffect(() => {
+//   changeAbc();
+//   changeChars();
+// }, [text]);
+
+// if (charBlockRef.current) {
+//   changeAbc(text);
+// }
+// if (ref.current.abc.length > 0) {
+//   changeChars(text);
+// }
+
+// useMemo(() => {
+//   if (charBlockRef.current) {
+//     changeAbc(text);
+//     // console.log(ref.current.abc);
+//   } else {
+//     // console.log("000---");
+//   }
+// }, [text]);
+
+// useMemo(() => {
+//   let radius = Number(props.text.radius) + 1;
+
+//   // radius = radius * 2; // console.log("rad", radius);
+// }, [props.text.radius]);
+
+// useEffect(() => {
+//   // console.log("first--", ref.current.abc);
+//   changeAbc(text);
+//   setState((s) => {
+//     return { ...s };
+//   });
+//   // console.log("first--", ref.current.abc);
+// }, []);
+
+// useEffect(() => {
+//   console.log("first--");
+//   charBlockRef.current.innerText = "C";
+//   let width = charBlockRef.current.getBoundingClientRect().width;
+//   console.log("w=", width);
+//   setState((s) => {
+//     return { ...s, text: width };
+//   });
+// }, []);
+
+// const ref = useRef({
+//   text: props.text.textInput,
+//   length: props.text.textInput.length,
+//   width: 0,
+//   abc: [],
+//   chars: [],
+//   radius: Number(props.text.radius),
+//   widthCircleBlock: Number(props.text.radius) * 2,
+//   fontSize: Number(props.text.fontSize),
+//   angle: Number(props.text.angle),
+//   propor: props.text.propor,
+// });
 
 /*
  {

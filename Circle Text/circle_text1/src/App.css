@@ -79,3 +79,11 @@ width: min-content;
   display: inline-block;
 }
 
+.App-header{
+  
+  --primary: #f403a4;
+
+}
+.App-header .charCirc{
+color: red;
+}
