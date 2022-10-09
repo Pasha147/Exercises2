@@ -3,16 +3,15 @@
   background-color: #282c34;
   min-height: 100vh;
   color: white;
-
 }
 
-p{
+p {
   margin: 0;
 }
 
 .App-header {
   /* border: 1px solid red; */
-  min-height: 10rem; 
+  min-height: 10rem;
   height: 20vh;
   /* display: flex;
   flex-direction: column;
@@ -20,70 +19,95 @@ p{
   justify-content: center;
   font-size: calc(10px + 2vmin);
   border-bottom: white 1px solid;
-  
+
   overflow: hidden;
   display: flex;
   justify-items: center;
 }
-.CircHeader{
-
-left: 0;
-top: 0;
+.CircHeader {
+  left: 0;
+  top: 0;
 }
 
-main{
+main {
   width: 100%;
   display: flex;
   justify-content: left;
   align-items: flex-start;
   flex-wrap: wrap;
-
 }
-main>div{
+main > div {
   border: white 1px solid;
   margin: 0.5rem;
 }
 
-.charBlockRef{
+.charBlockRef {
   /* font-size: 2rem; */
 }
 
-.LeftSide{
+.LeftSide {
   display: flex;
   flex-direction: column;
   width: 25vw;
   min-width: 15rem;
 }
 
-.Control{
+.Control {
   border: white 1px solid;
-    margin: 0.25rem;
+  margin: 0.25rem;
   background-color: #222b41;
 }
-.Control label{
- display: block;
+.Control label {
+  display: block;
 }
-.Control input{
+.Control input {
   width: 90%;
   margin: 0.25rem;
 }
-.controlCheck{
+.controlCheck {
   text-align: start;
 }
-.controlCheck input{
+.controlCheck input {
   width: min-content;
   display: inline-block;
 }
 .controlCheck label {
-width: min-content;
+  width: min-content;
   display: inline-block;
 }
 
-.App-header{
-  
-  --primary: #f403a4;
-
+.App-header {
+  --primary: #faade1;
+  --bg-color: black;
 }
-.App-header .charCirc{
-color: red;
+.App-header .charCirc {
+  color: #f588d0;
+  text-shadow: 0 0 5px #fa7bd0;
+
+  user-select: none;
+  /* animation: animate 1.5s linear infinite; */
+  animation: animate 4s linear;
+  animation-iteration-count: 2;
+}
+@keyframes animate {
+  0%,
+  40% {
+    color: #f588d0;
+    text-shadow: 0 0 5px #fa7bd0;
+
+    /* text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary); */
+  }
+  50% {
+    color: white;
+    text-shadow: 0 0 10px white, 0 0 20px var(--primary),
+      0 0 30px var(--primary), 0 0 40px var(--primary), 0 0 80px var(--primary),
+      0 0 160px var(--primary), 0 0 320px var(--primary);
+  }
+  65%,
+  100% {
+    color: #f588d0;
+    text-shadow: 0 0 5px #fa7bd0;
+
+    /* text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary); */
+  }
 }

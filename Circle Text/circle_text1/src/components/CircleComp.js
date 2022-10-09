@@ -311,6 +311,7 @@ export default function CircleComp(props) {
               className="charCirc"
               key={ind}
               style={{
+                animationDelay: `${1 + (1 / state.chars.length) * ind}s`,
                 // position: "absolute",
                 top: `${0}px`,
                 left: `${state.radius + state.fontSize}px`,

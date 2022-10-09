@@ -90,7 +90,7 @@ function App() {
             propor: false,
             radius: 1000,
             fontSize: 100,
-            angle: 339,
+            angle: 338.2,
             compration: 2,
             rotate: 0,
             rotate1: 0,
