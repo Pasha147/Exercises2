@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import CircleComp from "./components/CircleComp";
 import CircleCompC from "./components/CircleCompC";
-import CircleCompD from "./components/CircleCompD";
+// import CircleCompD from "./components/CircleCompD";
 
 function App() {
   const [state, setState] = useState({
@@ -139,8 +139,8 @@ function App() {
             );
           })}
         </div>
-        <CircleCompD text={state} />
-        <CircleComp text={state} />
+        {/* <CircleCompD text={state} /> */}
+        {/* <CircleComp text={state} /> */}
         <CircleCompC text={state} />
       </main>
     </div>

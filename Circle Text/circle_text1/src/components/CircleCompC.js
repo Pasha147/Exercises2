@@ -19,13 +19,9 @@ export default function CircleCompC(props) {
   });
   const [state, setState] = useState({ ...ref.current });
 
-  useEffect(() => {
-    ref.current.text = props.text.textInput;
+  const changeAbc = () => {
     const fontSize = ref.current.fontSize;
     const radius = ref.current.radius;
-    const compration = ref.current.compration;
-
-    //change abc library and determining width and height
     let chars = ref.current.text.split("");
     const newabc = new Set(chars);
     newabc.forEach((char) => {
@@ -46,10 +42,14 @@ export default function CircleCompC(props) {
         });
       }
     });
-    //========================================
+    // console.log(ref.current.abc);
+  };
 
+  const changeChars = () => {
     let widthTotal = 0;
+    let chars = ref.current.text.split("");
 
+    //get data from ABC for all chars
     chars = chars.map((char, i) => {
       const charInAbc = ref.current.abc.find((el) => el.char === char);
       const widthChar = charInAbc.widthChar;
@@ -64,8 +64,7 @@ export default function CircleCompC(props) {
       };
     });
 
-    //Change chars===========================
-
+    const compration = ref.current.compration;
     let angleChar = ref.current.angle;
     if (!ref.current.propor) {
       chars.forEach((item, i) => {
@@ -109,10 +108,13 @@ export default function CircleCompC(props) {
 
       return { ...item, left: left, top: top };
     });
-    // console.log(ref.current.chars);
-    setState({ ...ref.current });
+  };
 
-    // console.log(ref.current);
+  useEffect(() => {
+    ref.current.text = props.text.textInput;
+    changeAbc(); //change abc library and determining width and height
+    changeChars(); //Change chars===========================
+    setState({ ...ref.current });
   }, [props.text.textInput]);
 
   //Radius has changed
@@ -285,22 +287,8 @@ export default function CircleCompC(props) {
 
   return (
     <div className="circleTextComp">
-      <span
-        className="charBlockRef"
-        ref={charBlockRef}
-        // style={{
-        //   fontSize: `${state.fontSize}px`,
-        // }}
-      ></span>
-      {/* {/* <span>{props.text.textInput}</span>
-      <p>{`text=${state.text}`}</p> 
-      <p>{`width=${state.width}`}</p>
-      <p>{`length=${state.length}`}</p>
-      <p>{`Proportionately=${props.text.propor}`}</p>
-      <p>{`Radius=${props.text.radius}`}</p>
-      <p>{`FontSize=${props.text.fontSize}`}</p>
-      <p>{`Angle=${props.text.angle}`}</p>
-      <p>{`Compration=${props.text.compration}`}</p> */}
+      <span className="charBlockRef" ref={charBlockRef}></span>
+
       <div
         className="circleText"
         style={{
@@ -308,7 +296,7 @@ export default function CircleCompC(props) {
           height: `${state.widthCircleBlock}px`,
         }}
       >
-        {state.chars.map((item, ind) => {
+        {/* {state.chars.map((item, ind) => {
           return (
             <div
               className="charCirc"
@@ -346,7 +334,7 @@ export default function CircleCompC(props) {
               </div>
             </div>
           );
-        })}
+        })} */}
         {state.chars.map((item, ind) => {
           return (
             <div
