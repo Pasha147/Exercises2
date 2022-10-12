@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
   background-color: #282c34;
@@ -83,7 +86,8 @@ main > div {
 .App-header .charCirc {
   color: #f588d0;
   text-shadow: 0 0 5px #fa7bd0;
-
+  border: none;
+  background-color: #282c34;
   user-select: none;
   /* animation: animate 1.5s linear infinite; */
   animation: animate 4s linear;

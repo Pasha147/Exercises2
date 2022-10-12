@@ -16,6 +16,8 @@ export default function CircleCompC(props) {
     fontSize: Number(props.text.fontSize),
     angle: Number(props.text.angle),
     propor: props.text.propor,
+    rotate: Number(props.text.rotate),
+    rotate1: Number(props.text.rotate1),
   });
   const [state, setState] = useState({ ...ref.current });
 
@@ -47,9 +49,10 @@ export default function CircleCompC(props) {
 
   const changeChars = () => {
     let widthTotal = 0;
+    // let chars = [];
     let chars = ref.current.text.split("");
-
-    //get data from ABC for all chars
+    // getDataFromAbc();
+    // get data from ABC for all chars
     chars = chars.map((char, i) => {
       const charInAbc = ref.current.abc.find((el) => el.char === char);
       const widthChar = charInAbc.widthChar;
@@ -76,12 +79,17 @@ export default function CircleCompC(props) {
               (chars[i - 1].angleWidthChar + item.angleWidthChar);
         }
         chars[i].angleChar = angleChar;
+        chars[i].rotChar =
+          angleChar * (0.01 * ref.current.rotate1) + ref.current.rotate;
       });
     } else {
       const angleWidthChar = 360 / chars.length;
       const angle = ref.current.angle;
       chars.forEach((item, i) => {
         chars[i].angleChar = angle + i * angleWidthChar;
+        chars[i].rotChar =
+          chars[i].angleChar * (0.01 * ref.current.rotate1) +
+          ref.current.rotate;
       });
     }
 
@@ -114,6 +122,7 @@ export default function CircleCompC(props) {
     ref.current.text = props.text.textInput;
     changeAbc(); //change abc library and determining width and height
     changeChars(); //Change chars===========================
+    console.log(ref.current.chars);
     setState({ ...ref.current });
   }, [props.text.textInput]);
 
@@ -132,30 +141,7 @@ export default function CircleCompC(props) {
           Math.PI;
         return item;
       });
-      //Change angleChar in chars=========================================
-      if (!ref.current.propor) {
-        let angleChar = ref.current.angle;
-        let chars = ref.current.chars;
-        const compration = ref.current.compration;
-        chars.forEach((item, i) => {
-          const charInAbc = ref.current.abc.find((el) => el.char === item.char);
-          chars[i].angleWidthChar = charInAbc.angleWidthChar;
-          if (i > 0) {
-            angleChar =
-              angleChar +
-              0.5 *
-                compration *
-                (chars[i - 1].angleWidthChar + item.angleWidthChar);
-          }
-          chars[i].angleChar = angleChar;
-        });
-      } else {
-        const angleWidthChar = 360 / ref.current.length;
-        const angle = ref.current.angle;
-        ref.current.chars.forEach((item, i) => {
-          ref.current.chars[i].angleChar = angle + i * angleWidthChar;
-        });
-      }
+      changeChars();
     } else {
       ref.current.widthCircleBlock = ref.current.radius * 2;
     }
@@ -179,67 +165,27 @@ export default function CircleCompC(props) {
           (Math.atan((0.5 * item.widthChar) / ref.current.radius) * 360) /
           Math.PI;
       });
-
       //Change width height and charAngle in chars
-
-      let angleChar = ref.current.angle;
-      let chars = ref.current.chars;
-      const compration = ref.current.compration;
-      const angleWidthChar = 360 / ref.current.length;
-      chars.forEach((item, i) => {
-        const charInAbc = ref.current.abc.find((el) => el.char === item.char);
-        ref.current.chars[i].widthChar = charInAbc.widthChar;
-        ref.current.chars[i].heightChar = charInAbc.heightChar;
-        ref.current.chars[i].angleWidthChar = charInAbc.angleWidthChar;
-        if (!ref.current.propor) {
-          if (i > 0) {
-            angleChar =
-              angleChar +
-              0.5 *
-                compration *
-                (ref.current.chars[i - 1].angleWidthChar +
-                  charInAbc.angleWidthChar);
-          }
-        } else {
-          angleChar = ref.current.angle + i * angleWidthChar;
-          // console.log("i=", i, " angleChar=", angleChar);
-        }
-
-        ref.current.chars[i].angleChar = angleChar;
-      });
-      // console.log(ref.current.chars);
+      changeChars();
     } else {
       ref.current.widthCircleBlock = ref.current.radius * 2;
     }
-
     setState({ ...ref.current });
   }, [props.text.fontSize]);
 
   //Angle================================================
   useEffect(() => {
-    const oldAngle = ref.current.angle;
+    // const oldAngle = ref.current.angle;
     ref.current.angle = Number(props.text.angle);
-    const deltaAngle = ref.current.angle - oldAngle;
-    ref.current.chars.forEach((item, i) => {
-      ref.current.chars[i].angleChar =
-        ref.current.chars[i].angleChar + deltaAngle;
-    });
+    changeChars();
     setState({ ...ref.current });
   }, [props.text.angle]);
 
   //Compration================================================
   useEffect(() => {
     if (!ref.current.propor) {
-      const oldCompration = ref.current.compration;
       ref.current.compration = Number(props.text.compration);
-      const compration = ref.current.compration;
-      const angle = ref.current.angle;
-      ref.current.chars.forEach((item, i) => {
-        ref.current.chars[i].angleChar =
-          angle +
-          ((ref.current.chars[i].angleChar - angle) * compration) /
-            oldCompration;
-      });
+      changeChars();
       setState({ ...ref.current });
     }
   }, [props.text.compration]);
@@ -247,41 +193,20 @@ export default function CircleCompC(props) {
   //Proportionately================================================
   useEffect(() => {
     ref.current.propor = props.text.propor;
-    if (ref.current.propor) {
-      const angleWidthChar = 360 / ref.current.length;
-      const angle = ref.current.angle;
-      ref.current.chars.forEach((item, i) => {
-        ref.current.chars[i].angleChar = angle + i * angleWidthChar;
-      });
-    } else {
-      //Change angleChar in chars=========================================
-      let angleChar = ref.current.angle;
-      let chars = ref.current.chars;
-      const compration = ref.current.compration;
-      chars.forEach((item, i) => {
-        const charInAbc = ref.current.abc.find((el) => el.char === item.char);
-        chars[i].angleWidthChar = charInAbc.angleWidthChar;
-        if (i > 0) {
-          angleChar =
-            angleChar +
-            0.5 *
-              compration *
-              (chars[i - 1].angleWidthChar + item.angleWidthChar);
-        }
-        chars[i].angleChar = angleChar;
-      });
-    }
+    changeChars();
     setState({ ...ref.current });
   }, [props.text.propor]);
 
   //Rotation================================================
   useEffect(() => {
     ref.current.rotate = Number(props.text.rotate);
+    changeChars();
     setState({ ...ref.current });
   }, [props.text.rotate]);
   //Rotation1================================================
   useEffect(() => {
     ref.current.rotate1 = Number(props.text.rotate1);
+    changeChars();
     setState({ ...ref.current });
   }, [props.text.rotate1]);
 
@@ -296,57 +221,20 @@ export default function CircleCompC(props) {
           height: `${state.widthCircleBlock}px`,
         }}
       >
-        {/* {state.chars.map((item, ind) => {
-          return (
-            <div
-              className="charCirc"
-              key={ind}
-              style={{
-                // position: "absolute",
-                top: `${0}px`,
-                left: `${state.radius + state.fontSize}px`,
-                width: `${item.widthChar}px`,
-                height: `${item.heightChar}px`,
-
-                transformOrigin: `${item.widthChar / 2}px ${
-                  item.heightChar + state.radius
-                }px`,
-
-                transform: `translate(${
-                  -item.widthChar / 2
-                }px, ${0}px) rotate(${item.angleChar}deg) `,
-              }}
-            >
-              <div
-                className="charCircIn"
-                style={{
-                  position: "absolute",
-                  fontSize: `${state.fontSize * 0.75}px`,
-                  transformOrigin: `${item.widthChar / 2}px ${
-                    item.heightChar / 2
-                  }px`,
-                  transform: `rotate(${
-                    state.rotate - (item.angleChar * state.rotate1) / 100
-                  }deg)`,
-                }}
-              >
-                {item.char}
-              </div>
-            </div>
-          );
-        })} */}
         {state.chars.map((item, ind) => {
           return (
             <div
               className="charCirc"
               key={ind}
               style={{
-                color: "red",
                 width: `${item.widthChar}px`,
                 height: `${item.heightChar}px`,
                 left: `${item.left}px`,
                 top: `${item.top}px`,
-                rotate: `${item.angleChar}deg`,
+                rotate: `${
+                  // item.angleChar * (0.01 * state.rotate1) + state.rotate
+                  item.rotChar
+                }deg`,
                 // transformOrigin: "top left",
                 // transform: `rotate(${item.angleChar + 180}deg) `,
                 fontSize: `${state.fontSize * 0.75}px`,

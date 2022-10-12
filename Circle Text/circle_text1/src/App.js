@@ -2,30 +2,19 @@ import { useState } from "react";
 import "./App.css";
 import CircleComp from "./components/CircleComp";
 import CircleCompC from "./components/CircleCompC";
-// import CircleCompD from "./components/CircleCompD";
+import CircleCompE from "./components/CircleCompE";
 
 function App() {
   const [state, setState] = useState({
-    textInput: "Ci",
+    textInput: "Circulus text",
     propor: false,
     radius: 100,
     fontSize: 40,
     angle: 0,
     compration: 1,
     rotate: 0,
-    rotate1: 0,
+    rotate1: 100,
   });
-
-  // const state1 = {
-  //   textInput: "Dadslfkjs;fg as;dflgs dfg ;sdfg ",
-  //   propor: false,
-  //   radius: 100,
-  //   fontSize: 40,
-  //   angle: 0,
-  //   compration: 1,
-  //   rotate: 0,
-  //   rotate1: 0,
-  // };
 
   const controls = [
     {
@@ -93,7 +82,7 @@ function App() {
             angle: 338.2,
             compration: 2,
             rotate: 0,
-            rotate1: 0,
+            rotate1: 100,
           }}
         />
       </header>
@@ -140,8 +129,9 @@ function App() {
           })}
         </div>
         {/* <CircleCompD text={state} /> */}
-        {/* <CircleComp text={state} /> */}
         <CircleCompC text={state} />
+        {/* <CircleCompC text={state} /> */}
+        {/* <CircleComp text={state} /> */}
       </main>
     </div>
   );

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./CircleComp.css";
+import "./CircleCompE.css";
 
 import { useRef } from "react";
 
-export default function CircleComp(props) {
+export default function CircleCompE(props) {
   const charBlockRef = useRef(null);
   const ref = useRef({
     text: props.text.textInput,
@@ -66,7 +66,7 @@ export default function CircleComp(props) {
 
     //Change chars===========================
 
-    let angleChar = ref.current.angle;
+    let angleChar = 0;
     if (!ref.current.propor) {
       chars.forEach((item, i) => {
         if (i > 0) {
@@ -97,16 +97,6 @@ export default function CircleComp(props) {
     ref.current.width = widthTotal;
     ref.current.length = ref.current.text.length;
 
-    // ref.current.chars = ref.current.chars.map((item) => {
-    //   const radMax = ref.current.radius + ref.current.chars[0].heightChar;
-    //   const cosa = Math.cos((item.angleChar * Math.PI) / 180);
-    //   const sina = Math.sin((item.angleChar * Math.PI) / 180);
-    //   const top = radMax - radMax * cosa - item.widthChar * 0.5 * sina;
-    //   const left = radMax + radMax * sina - item.widthChar * 0.5 * cosa;
-
-    //   return { ...item, left: left, top: top };
-    // });
-    // console.log(ref.current.chars);
     setState({ ...ref.current });
 
     // console.log(ref.current);
@@ -129,7 +119,7 @@ export default function CircleComp(props) {
       });
       //Change angleChar in chars=========================================
       if (!ref.current.propor) {
-        let angleChar = ref.current.angle;
+        let angleChar = 0;
         let chars = ref.current.chars;
         const compration = ref.current.compration;
         chars.forEach((item, i) => {
@@ -146,7 +136,7 @@ export default function CircleComp(props) {
         });
       } else {
         const angleWidthChar = 360 / ref.current.length;
-        const angle = ref.current.angle;
+        const angle = 0;
         ref.current.chars.forEach((item, i) => {
           ref.current.chars[i].angleChar = angle + i * angleWidthChar;
         });
@@ -177,7 +167,7 @@ export default function CircleComp(props) {
 
       //Change width height and charAngle in chars
 
-      let angleChar = ref.current.angle;
+      let angleChar = 0;
       let chars = ref.current.chars;
       const compration = ref.current.compration;
       const angleWidthChar = 360 / ref.current.length;
@@ -196,7 +186,7 @@ export default function CircleComp(props) {
                   charInAbc.angleWidthChar);
           }
         } else {
-          angleChar = ref.current.angle + i * angleWidthChar;
+          angleChar = i * angleWidthChar;
           // console.log("i=", i, " angleChar=", angleChar);
         }
 
@@ -212,13 +202,13 @@ export default function CircleComp(props) {
 
   //Angle================================================
   useEffect(() => {
-    const oldAngle = ref.current.angle;
+    // const oldAngle = ref.current.angle;
     ref.current.angle = Number(props.text.angle);
-    const deltaAngle = ref.current.angle - oldAngle;
-    ref.current.chars.forEach((item, i) => {
-      ref.current.chars[i].angleChar =
-        ref.current.chars[i].angleChar + deltaAngle;
-    });
+    // const deltaAngle = ref.current.angle - oldAngle;
+    // ref.current.chars.forEach((item, i) => {
+    //   ref.current.chars[i].angleChar =
+    //     ref.current.chars[i].angleChar + deltaAngle;
+    // });
     setState({ ...ref.current });
   }, [props.text.angle]);
 
@@ -289,20 +279,13 @@ export default function CircleComp(props) {
         //   fontSize: `${state.fontSize}px`,
         // }}
       ></span>
-      {/* {/* <span>{props.text.textInput}</span>
-      <p>{`text=${state.text}`}</p> 
-      <p>{`width=${state.width}`}</p>
-      <p>{`length=${state.length}`}</p>
-      <p>{`Proportionately=${props.text.propor}`}</p>
-      <p>{`Radius=${props.text.radius}`}</p>
-      <p>{`FontSize=${props.text.fontSize}`}</p>
-      <p>{`Angle=${props.text.angle}`}</p>
-      <p>{`Compration=${props.text.compration}`}</p> */}
+
       <div
-        className="circleText"
+        className="circleTextE"
         style={{
           width: `${state.widthCircleBlock}px`,
           height: `${state.widthCircleBlock}px`,
+          transform: `rotate(${state.angle}deg`,
         }}
       >
         {state.chars.map((item, ind) => {
@@ -312,7 +295,6 @@ export default function CircleComp(props) {
               key={ind}
               style={{
                 animationDelay: `${1 + (1 / state.chars.length) * ind}s`,
-                // position: "absolute",
                 top: `${0}px`,
                 left: `${state.radius + state.fontSize}px`,
                 width: `${item.widthChar}px`,
