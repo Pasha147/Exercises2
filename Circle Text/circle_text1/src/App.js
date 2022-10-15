@@ -1,12 +1,14 @@
 import { useState } from "react";
 import "./App.css";
-import CircleComp from "./components/CircleComp";
+// import CircleComp from "./components/CircleComp";
 import CircleCompC from "./components/CircleCompC";
-import CircleCompE from "./components/CircleCompE";
+import HeaderText from "./components/HeaderText";
+// import CircleCompE from "./components/CircleCompE";
+import { controls } from "../src/appdata.js";
 
 function App() {
   const [state, setState] = useState({
-    textInput: "Circulus text",
+    textInput: "Ci",
     propor: false,
     radius: 100,
     fontSize: 40,
@@ -16,50 +18,9 @@ function App() {
     rotate1: 100,
   });
 
-  const controls = [
-    {
-      name: "radius",
-      min: "1",
-      max: "400",
-      step: "1",
-      lable: ["Radius", `px`],
-    },
-    {
-      name: "fontSize",
-      min: "1",
-      max: "200",
-      step: "1",
-      lable: ["Font size", `px`],
-    },
-    {
-      name: "angle",
-      min: "0",
-      max: "360",
-      step: "1",
-      lable: ["Angle", `deg`],
-    },
-    {
-      name: "compration",
-      min: "0.025",
-      max: "3",
-      step: "0.025",
-      lable: ["Compration", ` `],
-    },
-    {
-      name: "rotate",
-      min: "0",
-      max: "360",
-      step: "1",
-      lable: ["Rotate", `deg`],
-    },
-    {
-      name: "rotate1",
-      min: "0",
-      max: "100",
-      step: "1",
-      lable: ["Rotate1 ", `%`],
-    },
-  ];
+  // const charsGet = (chars) => {
+  //   console.log(chars);
+  // };
 
   const handleChangeControls = (e) => {
     if (e.target.name === "propor") {
@@ -72,19 +33,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <CircleComp
-          className="CircHeader"
-          text={{
-            textInput: "Circulus text",
-            propor: false,
-            radius: 1000,
-            fontSize: 100,
-            angle: 338.2,
-            compration: 2,
-            rotate: 0,
-            rotate1: 100,
-          }}
-        />
+        <HeaderText></HeaderText>
       </header>
       <main>
         <div className="LeftSide">
@@ -129,7 +78,10 @@ function App() {
           })}
         </div>
         {/* <CircleCompD text={state} /> */}
-        <CircleCompC text={state} />
+        <CircleCompC
+          text={state}
+          //  charsGetp={charsGet}
+        />
         {/* <CircleCompC text={state} /> */}
         {/* <CircleComp text={state} /> */}
       </main>

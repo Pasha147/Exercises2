@@ -122,7 +122,7 @@ export default function CircleCompC(props) {
     ref.current.text = props.text.textInput;
     changeAbc(); //change abc library and determining width and height
     changeChars(); //Change chars===========================
-    console.log(ref.current.chars);
+    // props.charsGetp(JSON.stringify(ref.current.chars));
     setState({ ...ref.current });
   }, [props.text.textInput]);
 

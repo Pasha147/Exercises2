@@ -1,0 +1,9 @@
+.headerText {
+  position: relative;
+  width: 100%;
+  height: 15rem;
+  border: 1px solid red;
+}
+.headerText span {
+  position: absolute;
+}
