@@ -10,8 +10,13 @@ p {
   min-height: 100vh;
   color: white;
 }
+.appCont {
+  max-width: 1024px;
+  margin: 0 auto;
+  overflow: hidden;
+}
 header {
-  height: 15rem;
+  border: 2px solid green;
 }
 
 main {

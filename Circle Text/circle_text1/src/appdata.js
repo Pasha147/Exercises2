@@ -51,7 +51,7 @@ export const headerText = [
     angleWidthChar: 2.7022909468989744,
     angleChar: 338.2,
     rotChar: 338.2,
-    left: 0,
+    left: 18,
     top: 75.08988177504104,
   },
   {
@@ -61,7 +61,7 @@ export const headerText = [
     angleWidthChar: 1.0572135536343774,
     angleChar: 341.95950450053334,
     rotChar: 341.95950450053334,
-    left: 79.12278647335677,
+    left: 97.12278647335677,
     top: 51.620234609768126,
   },
   {
@@ -71,7 +71,7 @@ export const headerText = [
     angleWidthChar: 1.517567339102819,
     angleChar: 344.5342853932705,
     rotChar: 344.5342853932705,
-    left: 120.28370575362851,
+    left: 138.2837057536285,
     top: 38.02029604116331,
   },
   {
@@ -81,7 +81,7 @@ export const headerText = [
     angleWidthChar: 2.016228200263168,
     angleChar: 348.0680809326365,
     rotChar: 348.0680809326365,
-    left: 178.8390732760554,
+    left: 196.8390732760554,
     top: 22.686343684887472,
   },
   {
@@ -91,7 +91,7 @@ export const headerText = [
     angleWidthChar: 2.4722020985977666,
     angleChar: 352.55651123149744,
     rotChar: 352.55651123149744,
-    left: 255.9194830775217,
+    left: 273.9194830775217,
     top: 8.848226081607013,
   },
   {
@@ -101,7 +101,7 @@ export const headerText = [
     angleWidthChar: 1.0572135536343774,
     angleChar: 356.0859268837296,
     rotChar: 356.0859268837296,
-    left: 332.62298724022594,
+    left: 350.62298724022594,
     top: 2.449080192143982,
   },
   {
@@ -111,7 +111,7 @@ export const headerText = [
     angleWidthChar: 2.4722020985977666,
     angleChar: 359.61534253596176,
     rotChar: 359.61534253596176,
-    left: 384.895992650478,
+    left: 402.895992650478,
     top: 0.02366250591477881,
   },
   {
@@ -121,7 +121,7 @@ export const headerText = [
     angleWidthChar: 1.8542774309419099,
     angleChar: 363.9418220655014,
     rotChar: 363.9418220655014,
-    left: 469.5201917859755,
+    left: 487.5201917859755,
     top: 2.483915208231313,
   },
   {
@@ -131,7 +131,7 @@ export const headerText = [
     angleWidthChar: 1.197881517114046,
     angleChar: 366.99398101355735,
     rotChar: 366.99398101355735,
-    left: 530.9219961728126,
+    left: 548.9219961728126,
     top: 7.813103889230078,
   },
   {
@@ -141,7 +141,7 @@ export const headerText = [
     angleWidthChar: 1.4792061896620132,
     angleChar: 369.6710687203334,
     rotChar: 369.6710687203334,
-    left: 577.0045232074914,
+    left: 595.0045232074914,
     top: 14.922157450751522,
   },
   {
@@ -151,7 +151,7 @@ export const headerText = [
     angleWidthChar: 2.2847074693916167,
     angleChar: 373.434982379387,
     rotChar: 373.434982379387,
-    left: 637.5409465292997,
+    left: 655.5409465292997,
     top: 28.73408849314029,
   },
   {
@@ -161,7 +161,7 @@ export const headerText = [
     angleWidthChar: 2.003442897610598,
     angleChar: 377.72313274638924,
     rotChar: 377.72313274638924,
-    left: 715.6759672598581,
+    left: 733.6759672598581,
     top: 49.83441485836203,
   },
   {
@@ -171,7 +171,7 @@ export const headerText = [
     angleWidthChar: 1.4792061896620132,
     angleChar: 381.20578183366183,
     rotChar: 381.20578183366183,
-    left: 780.4178941396723,
+    left: 798.4178941396723,
     top: 71.09833059257004,
   },
 ];
