@@ -1,10 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "./App.css";
-// import CircleComp from "./components/CircleComp";
 import CircleCompC from "./components/CircleCompC";
 import HeaderText from "./components/HeaderText";
-// import CircleCompE from "./components/CircleCompE";
-import { controls } from "../src/appdata.js";
+import Controls from "./components/Controls";
+import { Context } from "./context";
 
 function App() {
   const [state, setState] = useState({
@@ -18,17 +17,9 @@ function App() {
     rotate1: 100,
   });
 
-  // const charsGet = (chars) => {
-  //   console.log(chars);
-  // };
-
-  const handleChangeControls = (e) => {
-    if (e.target.name === "propor") {
-      setState({ ...state, propor: !state.propor });
-    } else {
-      setState({ ...state, [e.target.name]: e.target.value });
-    }
-  };
+  const cont = useContext(Context);
+  cont.state = state;
+  cont.setState = setState;
 
   return (
     <div className="App">
@@ -39,47 +30,7 @@ function App() {
           </div>
         </header>
         <main>
-          <div className="LeftSide">
-            <p>Controls</p>
-            <div className="Control">
-              <label htmlFor="textInput">{`Text`}</label>
-              <input
-                name="textInput"
-                type="text"
-                value={state.textInput}
-                onChange={handleChangeControls}
-              />
-            </div>
-            <div className="Control controlCheck">
-              <input
-                type="checkbox"
-                name="propor"
-                onChange={handleChangeControls}
-                defaultChecked={state.propor}
-              />
-              <label htmlFor="roportionately">{`Proportionately`}</label>
-            </div>
-
-            {controls.map((item) => {
-              return (
-                <div key={item.name} className="Control">
-                  <label htmlFor={item.name}>
-                    {`${item.lable[0]} ${state[item.name]} ${item.lable[1]}`}
-                  </label>
-                  <input
-                    className="inp"
-                    type="range"
-                    name={item.name}
-                    min={item.min}
-                    max={item.max}
-                    value={state[item.name]}
-                    step={item.step}
-                    onChange={handleChangeControls}
-                  />
-                </div>
-              );
-            })}
-          </div>
+          <Controls></Controls>
           <CircleCompC text={state} />
         </main>
       </div>

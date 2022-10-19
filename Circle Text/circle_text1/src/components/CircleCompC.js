@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./CircleComp.css";
 
-import { useRef } from "react";
+import { useRef, useContext } from "react";
+import { Context } from "../context";
 
 export default function CircleCompC(props) {
   const charBlockRef = useRef(null);
@@ -19,6 +20,9 @@ export default function CircleCompC(props) {
     rotate: Number(props.text.rotate),
     rotate1: Number(props.text.rotate1),
   });
+  const cont = useContext(Context);
+  // console.log(cont);
+
   const [state, setState] = useState({ ...ref.current });
 
   const changeAbc = () => {

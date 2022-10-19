@@ -1,3 +1,7 @@
+:root {
+  --w1: 450px;
+}
+
 .headerCenter {
   --w: 350;
   --sc: calc(var(--w) / 845);
