@@ -1,15 +1,17 @@
+.circleTextComp {
+  border: 1px solid white;
+}
 .charBlockRef {
   border: none;
 }
 
-.circleTextComp {
-}
 .circleText {
   position: relative;
+
   /* background: rgba(48, 35, 47, 0.527); */
 }
 .charCirc {
   position: absolute;
-  background: rgba(2, 70, 104, 0.253);
-  border: 1px solid rgba(255, 255, 255, 0.507);
+  /* background: rgba(2, 70, 104, 0.253); */
+  /* border: 1px solid rgba(255, 255, 255, 0.507); */
 }

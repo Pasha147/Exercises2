@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./CircleComp.css";
+import "./CircleCompC.css";
 
 import { useRef, useContext } from "react";
 import { Context } from "../context";

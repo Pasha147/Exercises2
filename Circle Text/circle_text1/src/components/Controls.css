@@ -1,0 +1,36 @@
+.LeftSide {
+  display: flex;
+  flex-direction: column;
+  width: 25vw;
+  min-width: 15rem;
+  border: white 1px solid;
+  margin: 0.75rem;
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 2;
+}
+
+.Control {
+  border: white 1px solid;
+  margin: 0.25rem 0.5rem;
+  background-color: #222b41;
+}
+.Control label {
+  display: block;
+}
+.Control input {
+  width: 90%;
+  margin: 0.25rem;
+}
+.controlCheck {
+  text-align: start;
+}
+.controlCheck input {
+  width: min-content;
+  display: inline-block;
+}
+.controlCheck label {
+  width: min-content;
+  display: inline-block;
+}

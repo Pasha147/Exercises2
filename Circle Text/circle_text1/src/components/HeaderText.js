@@ -16,13 +16,14 @@ export default function HeaderText(props) {
   // }, []);
   return (
     <div className="headerCenter">
-      <div className="headerText">
+      <div className="headerText App-header">
         {headerText.map((item, ind) => {
           return (
             <div
-              className="char"
+              className="char charCirc"
               key={`ht${ind}`}
               style={{
+                animationDelay: `${1 + (1 / headerText.length) * ind}s`,
                 width: `${item.widthChar}px`,
                 height: `${item.heightChar}px`,
                 left: `${item.left}px`,
