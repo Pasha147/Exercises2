@@ -3,10 +3,11 @@
   --sc: calc(var(--w) / 845);
   width: calc(var(--w) * 1px);
   height: calc(var(--w) * 184px / 845);
-  /* border: 1px solid #f588d0; */
+  border: 1px solid #f588d0;
   overflow: hidden;
   margin: 0 auto;
 }
+
 .headerText {
   position: relative;
   width: 845px;

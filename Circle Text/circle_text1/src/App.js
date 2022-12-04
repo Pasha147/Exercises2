@@ -25,9 +25,7 @@ function App() {
     <div className="App">
       <div className="appCont">
         <header>
-          <div className="headerCenter">
-            <HeaderText></HeaderText>
-          </div>
+          <HeaderText></HeaderText>
         </header>
         <main>
           <Controls></Controls>
