@@ -1,0 +1,21 @@
+.section *{
+    font-weight: normal;
+    color: rgb(254, 254, 254);
+}
+.section{
+      
+    text-align: start;
+    background-color: rgb(61, 65, 85);
+}
+
+
+
+h1{
+    /* font-weight: normal; */
+    text-align: center;
+}
+button{
+    background-color: rgb(73, 73, 219);
+    border-radius: 8px;
+   min-height: 2rem;
+}

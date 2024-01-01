@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+
 import './App.css';
+import EffectSection from './components/EffectSection';
+import PrtTest from "./components/PrtTest";
 
 function App() {
+  const youtubRef='https://www.youtube.com/watch?v=kz23xxukY5s&t=5166s&ab_channel=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BB%D0%B5%D0%BD%D0%9C%D0%B8%D0%BD%D0%B8%D0%BD'
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Creation of a Modal window</h1>
+      <pre>{`Creation of a Modal window 
+           with the createPortal 
+           by Vladilen`}</pre>
+      <a href={youtubRef}>{'React JS c Нуля - Курс для начинающих БЕЗ ВОДЫ [2024]'}</a>
+      <EffectSection/>
+      <button id='fff' >ffffffff</button>
+      <PrtTest/>
     </div>
   );
 }
