@@ -1,6 +1,6 @@
 .section *{
     font-weight: normal;
-    color: rgb(254, 254, 254);
+    color: rgb(190, 153, 153);
 }
 .section{
       
@@ -8,6 +8,9 @@
     background-color: rgb(61, 65, 85);
 }
 
+.control{
+    color: black;
+}
 
 
 h1{
