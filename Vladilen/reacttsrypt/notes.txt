@@ -1,3 +1,19 @@
+React и TypeScript - Быстрый Курс
+https://www.youtube.com/watch?v=OJ16BaPC6VI&ab_channel=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BB%D0%B5%D0%BD%D0%9C%D0%B8%D0%BD%D0%B8%D0%BD
 
 npx create-react-app --template typescript reacttsrypt
 https://fakestoreapi.com/products
+
+46:20 	Переключатель из кнопки (prev передает в onClick ) и стили из массива
+	       <button 
+       		 onClick={()=>setDetails(prev=>!prev)}
+       		 className={btnClasses.join(' ')}>
+          	 {details ? 'Hide Detailes': 'Show Detailes'}
+       	       </button>
+
+47:10 Добавление инлайн стиля
+	<p>Rate: <span style={{fontWeight: 'bold'}}>{product.rating.rate}</span></p>
+
+47:10	npm i axios
+
+56:30 эмуляция медленного инета: В разработке перейти на network\No throttling\ slow 3G
