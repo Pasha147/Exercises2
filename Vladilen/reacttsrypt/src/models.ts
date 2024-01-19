@@ -1,5 +1,7 @@
 export interface IProduct{
-    id: number
+
+    // id?: number не обязательный параметр, id: number обязательный параметр
+    id?: number
     title: string
     price: number
     description: string

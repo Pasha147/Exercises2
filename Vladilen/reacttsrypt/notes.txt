@@ -17,3 +17,52 @@ https://fakestoreapi.com/products
 47:10	npm i axios
 
 56:30 эмуляция медленного инета: В разработке перейти на network\No throttling\ slow 3G
+
+1:00:00 кастомный хук
+
+1:04:00 модальное окно
+
+1:13:00 event.preventDefault
+		const submitHandler=(event: React.FormEvent)=>{
+		    event.preventDefault()
+		}
+1:16:15 event: React.KeyboardEvent<HTMLInputElement> эта строчка выдаёт ошибку, надо заменить тип ивента на event: 						React.ChangeEvent<HTMLInputElement>
+
+1:18:00  id?: number не обязательный параметр, 
+	 id: number обязательный параметр
+
+		export interface IProduct{
+      			id?: number
+   			title: string
+    			...}
+
+1:19:20 Валидация
+	//Валидация
+        if(value.trim().length===0){
+            setError('Please enter valid title')
+            return // return - нужен для того чтоб елемент не создавался если тайтл не валидный
+        }
+
+1:23:15 Закрываем модальное окно. Передаем как пропс функуию (бумеранг)
+
+1:26:40 ? используется для проверки если ли поля в объекте
+		без проверки что то есть ли поле product.rating.rate ? 
+	<p>Rate: <span style={{fontWeight: 'bold'}}>{product.rating.rate}</span></p>
+		
+		проверка есть ли поле product?.rating?.rate
+	<p>Rate: <span style={{fontWeight: 'bold'}}>{product?.rating?.rate}</span></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
