@@ -52,6 +52,10 @@ https://fakestoreapi.com/products
 		проверка есть ли поле product?.rating?.rate
 	<p>Rate: <span style={{fontWeight: 'bold'}}>{product?.rating?.rate}</span></p>
 
+1:26:40 Убирать модалку при клике за модалкой
+
+1:30:00 Создание контекста
+
 
 
 
