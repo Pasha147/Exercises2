@@ -1,3 +1,10 @@
+
+24.01.2024 W3 schools
+	https://www.w3schools.com/sql/sql_drop_table.asp
+
+20.01.2024 Полное руководство по Flexbox
+	https://habr.com/ru/articles/467049/
+
 24.05.2022
 MERN Stack Social Media App Tutorial | React Node.js full Course for Beginners
 https://www.youtube.com/watch?v=WWhgssiyfwY
