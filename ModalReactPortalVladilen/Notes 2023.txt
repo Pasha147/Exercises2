@@ -1,0 +1,118 @@
+======================================================================================
+		Vladilen React JS c Нуля - Курс для начинающих БЕЗ ВОДЫ [2024]
+
+https://www.youtube.com/watch?v=kz23xxukY5s&t=5166s&ab_channel=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BB%D0%B5%D0%BD%D0%9C%D0%B8%D0%BD%D0%B8%D0%BD
+
+
+10:57 react.new  - в любом браузере перекинет в онлайн редактор...
+36:15 ctrl+c - code formater Pritier
+37:11  abbreviated export component entry
+
+	export default function Error ()  {
+ 	 return (
+  	 ...
+ 	 );
+	};
+
+39:49 component names must begin with an uppercase letter
+44:20 {'hello'.toUpperCase()}
+44:33  const now = new Date()
+	{now.toLocaleTimeString()} - this command converts an object to a string variable
+
+49:34	<strong>...</strong> 	//bolt font
+56:50	Spred operator <WayToTeach title={ways[0].title} descr={ways[0].descr}/>
+			<WayToTeach {...ways[0]}/>
+
+57:20	/destructure  
+		WayToTeach (props) <==> WayToTeach ({title, descr}) 
+
+1:06:22  props children  (способ передачи параметров в компонента через чилдрен)
+		<Button>text</Button> 
+		export default function Button({children}){....}
+		можно передавать структуру не только параметры
+
+1:08:28	событие начинается с on
+		onClick={handleClick}
+		onClick={handleClick()}  нельзя вызывать, только название
+		onClick={()=>{...}}	так тоже можно
+
+1:14:12 передаем функцию как параметр в компонент
+		<Button onClick={handleClick}>text</Button> 
+
+		export default function Button({children, onClick}){
+						....
+							}
+1:17:02		так можно передать функцию с параметрами (замыкание)
+		onClick={()=>handleClick('params')}
+
+1:31:51		таймер через сетстейт
+			
+			const [now, setNow] = useState(new Date())
+			setInterval(()=>setNow(new Date()),1000)
+
+1:35:04		тернарный оператор в структуре
+			{contentType ? (<p>...</p>):(<div>...</div>)}
+			{contentType && (<p>...</p>)}
+
+1:35:04		Условный рендеринг, логика вынесена перед return
+
+1:35:04	  Динамическое подключение стилей инлайн style={{color: 'red', ...}}
+
+2:03:15		Так можно вставлять едементы 	
+			React.createElement('h1', {className: 'centered'}, 'result unever')
+		так же можно вставить массив елементов
+
+2:14:50		бумеранг
+
+2:21:00		стилизация, стили под каждый елемент, чтоб не пересекались имена
+		import classes from '.Button.modules.css //в имя файла нужно добавить .modules
+		тогда вызывать стили className={'${classes.button} ${classes.active}'}
+
+2:22:20		стилизация с помощью библиотеки styled-components
+
+2:27:07		Работа с формами
+		<form>
+ 		   <label htmlFor='name'>Name</label>
+  		   <input type="text" id='name' className="control"/>
+		</form>
+
+2:38:40 Передача параметров в елемент с помощью оператора рест (выглядит как спред)
+			{...props} // если имена передаваемых параметров совпадает с 
+			с именами в самом компоненте .
+
+2:45:00		стейт меняется не сразу а вконце рендеренга и по этому первый вариант
+			работать не будет (он дважды поменяет одно и тоже значение hasError)
+			function toggleError(){
+				setHasError(!hasError) //false
+				setHasError(!hasError) //false
+			}
+			а в этом варианте все будет работать
+			function toggleError(){
+				setHasError((perv)=>!prev) //false
+				setHasError((perv)=>!prev) //true
+			}
+
+2:45:00		The <pre> HTML element represents preformatted text 
+
+2:55:00		Реакция на нажатие клавиши на клавиатуре onKeyDown={...} 'Enter'
+
+2:58:52		debager //позволяет остановить процесс js
+
+3:00:10		const input = useRef()
+		<h1>{input.current?.value}</h1> отображается если input.current уже существует
+
+
+
+---------------------====================----------------------
+
+
+
+
+
+
+
+
+
+
+
+

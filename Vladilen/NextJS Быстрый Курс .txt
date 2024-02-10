@@ -1,0 +1,37 @@
+------------ NextJS Быстрый Курс - SSR на React JS -----------
+
+https://www.youtube.com/watch?v=_EOrSmjdOZQ&ab_channel=%D0%92%D0%BB%D0%B0%D0%B4%D0%B8%D0%BB%D0%B5%D0%BD%D0%9C%D0%B8%D0%BD%D0%B8%D0%BD
+
+
+49:42 - Переход по роутерам с помощью кнопки
+
+	import React from 'react'
+	import Router from 'next/router'
+	export default function About() {
+	const linkClickHandter =()=>{
+	Router.push( url: '/')
+	}
+	return (
+	<React.Fragment>
+	  <hl>About Page</hl>
+	  <button onClick={linkClickHandter}>Go back to home</button>
+	  <button onClick={() => Router.push( url: '/posts' )}>Go to posts</button> 
+	</React.Fragment>
+	)
+	}
+
+1:00:39 - добавить стили к елементу прамо в jsx
+	<main>
+	{children}
+	</main>
+	<style jsx>{'
+	 nav {
+		position: fixed;
+		height: 60px;
+		left: 0;
+		right: 0;
+	
+	}
+	'}</style>
+
+	<style jsx global>{' - глобальные стили
