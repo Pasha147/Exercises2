@@ -35,3 +35,27 @@ https://www.youtube.com/watch?v=_EOrSmjdOZQ&ab_channel=%D0%92%D0%BB%D0%B0%D0%B4%
 	'}</style>
 
 	<style jsx global>{' - глобальные стили
+
+1:22:39 json-server - Фейковый ресе апи https://www.npmjs.com/package/json-server
+		npm i -g json-server
+	1:26:56 params...
+
+1:31:10 Для запуска нескольких скриптов npm i -D concurrently
+   	 "dev": "next dev",
+   	 "serve": "concurrently \"npm run dev\" \"npm run mock\"",
+   	 "mock": "json-server -w db.json -p 4200"
+
+1:33:27  Отображение массива в <pre>
+	<pre>
+	   {JSON.stringify(posts, null, 2)}
+        </pre>
+
+
+
+
+
+
+
+	
+
+

@@ -1,0 +1,7 @@
+{
+    "posts": [
+        {"id": 1, "title": "JS1", "body": "1There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."},
+        {"id": 2, "title": "JS2", "body": "2There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."},
+        {"id": 3, "title": "JS3", "body": "3There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable."}
+    ]
+}
