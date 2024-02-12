@@ -16,6 +16,13 @@ export default async function Home() {
       <nav>
         <Link href='/posts'>Posts</Link>
       </nav>
+      <ul>
+        {posts.map((post) => (
+          <li key={post.id}>
+            <Link href={`/post?id=${post.id}`}>{post.title}</Link>
+          </li>
+        ))}
+      </ul>
       <pre>
         {
           JSON.stringify(posts, null, 2)
@@ -25,7 +32,7 @@ export default async function Home() {
   );
 }
 
-async function getData(){
+async function getData() {
   const response = await fetch('http://localhost:4200/posts')
   const posts = await response.json()
 
