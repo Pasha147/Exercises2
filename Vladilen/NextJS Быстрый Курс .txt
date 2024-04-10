@@ -50,7 +50,14 @@ https://www.youtube.com/watch?v=_EOrSmjdOZQ&ab_channel=%D0%92%D0%BB%D0%B0%D0%B4%
 	   {JSON.stringify(posts, null, 2)}
         </pre>
 
+1:35:33  getInitialProps 
+	Posts.getInitialProps=async ()=>{
+    		const response = await fetch('http://localhost:4200/posts')
+      		const posts = await response.json()
+      		return {posts} //важно вернуть объект
+	}
 
+2:09:30 Оператор ??
 
 
 
