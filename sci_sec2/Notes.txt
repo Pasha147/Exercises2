@@ -1,0 +1,8 @@
+Вступ до модулів
+	https://uk.javascript.info/modules-intro
+
+Внесення змін в документ
+	https://uk.javascript.info/modifying-document#stvorit-derevo-z-obyektu
+
+Live Server
+	https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
