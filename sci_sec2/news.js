@@ -10,8 +10,8 @@ export const news = [
         text: 'sdgfdgdgfdgg'
     },
     {
-        date: '3 2024',
-        title: 'sdfsdfsf',
+        date: '2024',
+        title: '3 sdfsdfsf',
         text: 'sdgfdgdgfdgg'
     },
   ];
