@@ -1,0 +1,17 @@
+main{
+    margin-top: var(--headerHeight);
+    flex: 1 1 auto;
+  /* padding-top: 7rem; */
+  background: rgb(255, 255, 255);
+}
+article{
+    
+    height: 25rem;
+    margin: 1rem;
+
+    padding: 1rem;
+    /* border-bottom: #645cff 2px solid; */
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 10px #1e2828b8;
+    margin: 1rem 0.5rem;
+}
