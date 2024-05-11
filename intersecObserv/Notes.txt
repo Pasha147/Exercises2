@@ -1,0 +1,33 @@
+Intersection Observer API
+	https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
+
+React - check if element is visible in DOM
+	https://stackoverflow.com/questions/45514676/react-check-if-element-is-visible-in-dom
+
+How to Get Position of an Element in React JS
+	https://timetoprogram.com/get-position-of-element-react-js/
+
+How to Get Width and Height of an element in React JS
+	https://www.youtube.com/watch?v=xMYhvqK5VuI&ab_channel=TimeForProgramming
+
+Time To Program !!!!!! 
+	https://timetoprogram.com/
+
+Storing an array of elements using the useRef hook
+	https://mattclaffey.medium.com/adding-react-refs-to-an-array-of-items-96e9a12ab40c
+
+		const itemEls = useRef(new Array())
+		{items.map(item => (
+ 		<p key={item} ref={(element) => itemEls.current.push(element)}>{item}</p>
+		))
+
+How can I use multiple refs for an array of elements with hooks?
+	https://stackoverflow.com/questions/54633690/how-can-i-use-multiple-refs-for-an-array-of-elements-with-hooks
+
+		 const itemsRef = useRef([]);
+
+
+
+
+
+

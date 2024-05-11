@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400&display=swap");
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: #131316;
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  padding: 1rem;
+  margin: 0;
+  box-sizing: border-box;
+}
+section {
+  border: 1px solid rgb(245, 181, 181);
+  border-radius: 16px;
+  min-height: 90vh;
+  overflow: hidden;
+  margin: 32px 1rem;
+  padding: 1rem;
+}
+footer {
+  min-height: 25vh;
+}
+.hidden {
+  opacity: 0.1;
+  /* filter: blur(70px); */
+  transition: all 2s linear;
+}
+.hidden h2 {
+  margin-left: 20%;
+  transition: all 1s linear;
+}
+.show {
+  /* filter: blur(0px); */
+  opacity: 1;
+}
+.show h2 {
+  margin-left: 0;
+}
+
+/* nobody wants to watch your stupid animations over and over again */
+@media (prefers-reduced-motion) {
+  .hidden {
+    transition: none;
+  }
+}
