@@ -3,7 +3,7 @@ import { useState } from "react";
 import { links } from "../appdata";
 
 export default function Header() {
-  const [burMenu, setBurMenu] = useState(false);
+  const [burMenu, setBurMenu] = useState(true);
 
   const handleClick = (num) => {
     // console.log(num);
@@ -22,7 +22,8 @@ export default function Header() {
           <a className={cl.link_logo} href="/">
             <img className={cl.h_logo} src="./img/logo.jpg" alt="Logo"></img>
           </a>
-          <div
+          {
+            burMenu && ( <div
             className={
               burMenu ? [cl.h_burger, cl.h_burgerOff].join(" ") : cl.h_burger
             }
@@ -30,6 +31,10 @@ export default function Header() {
           >
             <span></span>
           </div>
+
+            )
+          }
+         
         </div>
         <nav className={burMenu ? cl.nav : [cl.nav, cl.navOff].join(" ")}>
           {links.map((link, num) => {

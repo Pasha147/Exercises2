@@ -40,8 +40,10 @@
 }
 
 .h_burger {
-  display: none;
+  /* z-index: 100; */
+  /* display: none; */
 }
+
 
 .nav {
   flex-grow: 1;

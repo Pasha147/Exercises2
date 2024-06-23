@@ -1,4 +1,17 @@
 
+
+How To Make Full Screen Scrolling Website Using HTML And CSS
+	https://www.youtube.com/watch?v=KAG5wNPdoTw&ab_channel=GreatStack
+
+Reveal Website Elements On Scroll | On Page Scroll Down - Using HTML, CSS & Javascript
+	https://www.youtube.com/watch?v=VplDlwLTR50&ab_channel=CodingSnow
+
+React Developer Tools - как пользоваться Profiler
+	https://www.youtube.com/watch?v=Dm3DW3MiFjE&ab_channel=%D0%A7%D0%B5%D0%B1%D0%BE%D1%82%D0%B0%D0%B5%D0%B2%D0%A0%D0%BE%D0%BC%D0%B0%D0%
+
+📜Awesome Page Scroll Effect | HTML & CSS✨
+	https://www.youtube.com/watch?v=uV8kH5RgSZU&ab_channel=WebDevMadeEasy
+
 24.01.2024 W3 schools
 	https://www.w3schools.com/sql/sql_drop_table.asp
 
