@@ -2,36 +2,30 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-// import { dataArray } from '../public/dataArray'
-import News from './components/News'
+
+
+
+import Header from './components/header'
+import Main from './components/main';
+import Menu from './components/menu';
+import Footer from './components/footer';
+
+import { text } from '../public/dataArray'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const[lang, setLang]=useState('Ukr')
+  let textCont= lang==='Ukr'? text.Ukr: text.En
+  const[colorMenu, setColorMenu]=useState(
+    text.Ukr.menu.links.map(()=>{return {ratio: 0}})
+  )
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      <News/>
-    </>
+<div className="App">
+     <Header textCont={textCont.header} lang={lang} setLang={setLang}/>
+     <Menu textCont={textCont.menu} colorMenu={colorMenu}/>
+     <Main textCont={textCont.main} setColorMenu={setColorMenu}/>
+      <Footer textCont={textCont.footer}/>
+    </div>
   )
 }
 

@@ -1,0 +1,127 @@
+.nav {
+  --col1: aqua;
+  --col2: rgb(44, 160, 160);
+  --col3: rgb(63 97 97);
+  --shad: 5px 5px 10px rgb(80 84 160 / 72%);
+  --shadOn: 5px 5px 10px #e7edddb8;
+  position: fixed;
+  right: var(--navRight);
+  top: var(--navTop);
+  z-index: 5;
+  padding: 5px;
+  border-radius: 0.5rem;
+
+  /* background-color: rgba(0, 255, 255, 0.51); */
+  /* background-color: transparent; */
+  opacity: 90%;
+}
+
+.m_burg {
+  display: flex;
+  justify-content: end;
+}
+.m_burgOn,
+.m_burgOff {
+  width: 2rem;
+  height: 2rem;
+  background-color: var(--clr-neon);
+  border-radius: 50%;
+  /* border: 2px solid var(--col2); */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--shad);
+  cursor: pointer;
+}
+.m_burgOn div {
+  background-color: azure;
+}
+.m_burgOff div {
+  background-color: var(--col3);
+}
+/* .m_burgOn {
+  background-color: var(--col1);
+  box-shadow: var(--shadOn);
+}
+.m_burgOff {
+  background-color: var(--col2);
+  box-shadow: var(--shad);
+} */
+
+.m_burg > div > div {
+  width: 60%;
+  height: 3px;
+  /* background-color: var(--col2); */
+  border-radius: 0;
+  border: none;
+  margin: 2px auto;
+}
+
+.navLink {
+  padding: 0;
+  height: 2rem;
+  margin: 1rem 0;
+
+  border-radius: 1rem;
+  opacity: 90%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  cursor: pointer;
+  box-shadow: var(--shad);
+  
+}
+.nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+/* .liNum {
+  width: 2rem;
+  height: 2rem;
+ 
+  border-radius: 50%;
+  border: 2px solid rgb(44, 160, 160);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
+/* .liNum span {
+  line-height: 0%;
+} */
+
+.liNameOn {
+  margin: 0 0.5rem 0 0.25rem;
+  width: 9rem;
+  transition: all 0.5s ease 0s;
+  white-space: nowrap;
+  color: var(--clr-neon);
+}
+.liNameOff {
+  /* display: none; */
+  width: 0rem;
+  overflow: hidden;
+  transition: all 0.5s ease 0s;
+  white-space: nowrap;
+}
+.navOff {
+  display: none;
+}
+
+.neonButton {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+
+  cursor: pointer;
+
+  border: var(--clr-neon) 0.125em solid;
+  box-shadow: inset 0 0 0.5rem var(--clr-neon);
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--clr-neon);
+  opacity: 0;
+}

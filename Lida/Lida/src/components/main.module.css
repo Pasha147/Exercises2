@@ -1,0 +1,25 @@
+.main{
+  
+    /* margin-top: var(--headerHeight); */
+    /* flex: 1 1 auto; */
+  /* padding-top: 7rem; */
+  /* background: rgb(218, 145, 145); */
+}
+
+
+.article{
+  background-color:var(--appCol);
+    margin: 1rem 0rem;
+
+    padding: 1rem;
+    /* border-bottom: #645cff 2px solid; */
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 10px #1e2828b8;
+   
+}
+.main article:nth-child(1){
+  font-size: var(--firstArtFont);
+  
+}
+
+
