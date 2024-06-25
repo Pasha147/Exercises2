@@ -16,14 +16,18 @@ function App() {
   const[lang, setLang]=useState('Ukr')
   let textCont= lang==='Ukr'? text.Ukr: text.En
   const[colorMenu, setColorMenu]=useState(
-    text.Ukr.menu.links.map(()=>{return {ratio: 0}})
+    textCont.main.articles.map(()=>{return {ratio: 0}})
   )
+  const menu=textCont.main.articles.map((item)=>{return {name: item.navMenu}})
+const articles=textCont.main.articles.map((item)=>{return item.article})
+// console.log(colorMenu);
+
 
   return (
 <div className="App">
      <Header textCont={textCont.header} lang={lang} setLang={setLang}/>
-     <Menu textCont={textCont.menu} colorMenu={colorMenu}/>
-     <Main textCont={textCont.main} setColorMenu={setColorMenu}/>
+     <Menu textCont={menu} colorMenu={colorMenu}/>
+     <Main textCont={articles} setColorMenu={setColorMenu}/>
       <Footer textCont={textCont.footer}/>
     </div>
   )

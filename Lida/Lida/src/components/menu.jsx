@@ -7,7 +7,7 @@ export default function Menu(props) {
   const wrapperRef = useRef(null);
 
   const [burMenu, setBurMenu] = useState(false);
-  let links = props.textCont.links;
+  let links = props.textCont;
   const handleClick = (num) => {
     // console.log(num);
     const square = document.getElementById(`artId${num}`);

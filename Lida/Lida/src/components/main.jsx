@@ -3,7 +3,7 @@ import cl from "./main.module.css";
 // import { links } from "../appdata";
 
 export default function Main(props) {
-  let articles = props.textCont.articles;
+  let articles = props.textCont;
   const itemEls = useRef([]);
 
   // const artSt = useMemo(()=> articles.map((art, n) => {
@@ -15,7 +15,7 @@ export default function Main(props) {
 
   useEffect(() => {
 
-    const artSt = props.textCont.articles.map((art, n) => {
+    const artSt = props.textCont.map((art, n) => {
       return { id: `artId${n}`, intersect: false, ratio: 0 };
     });
 
