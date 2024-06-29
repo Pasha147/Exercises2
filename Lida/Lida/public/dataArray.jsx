@@ -1,3 +1,7 @@
+window.dataArray = [1,2,3];
+
+
+
 export const text = {
   Ukr: {
     header: {
@@ -32,6 +36,10 @@ export const text = {
   },
 };
 
+
+
+
+
 //-- Articles Ukr----------------------------------------------
 text.Ukr.main.articles[0] = {
   navMenu: "1Про конференцію",
@@ -61,6 +69,29 @@ text.Ukr.main.articles[1] = {
   article: (
     <>
       <h2>2Вельмишановні колеги!</h2>
+      <p style={{ textAlign: "center" }}>
+        Організатори запрошують Вас взяти участь у роботі {` `}
+        <br />
+        <b>
+          Міжнародної наукової <br />
+          конференції «Механіка: сучасність і перспективи»,
+        </b>
+        <br />
+        Конференція відбуватиметься в<br />
+        Інституті механіки ім. С.П Тимошенка <br />
+        НАН України
+        <br />
+        7–11 жовтня 2024 р.
+      </p>
+    </>
+  ),
+};
+
+text.Ukr.main.articles[2] = {
+  navMenu: "3Про конференцію",
+  article: (
+    <>
+      <h2>3Вельмишановні колеги!</h2>
       <p style={{ textAlign: "center" }}>
         Організатори запрошують Вас взяти участь у роботі {` `}
         <br />
@@ -112,6 +143,30 @@ text.En.main.articles[1] = {
   article: (
     <>
       <h2>2Dear colleagues!</h2>
+      <p style={{ textAlign: "center" }}>
+        The organizers invite you to take <br />
+        part in the work of the <br />
+        <b>
+          International Scientific Conference "Mechanics: Contemporary
+          Approaches and Future Directions",
+        </b>
+        <br />
+        The conference will take place at the
+        <br />
+        S.P. Timoshenko Institute of Mechanics, <br />
+        National Academy of Sciences of Ukraine
+        <br />
+        October 7-11, 2024
+      </p>
+    </>
+  ),
+};
+
+text.En.main.articles[2] = {
+  navMenu: "3About conference",
+  article: (
+    <>
+      <h2>3Dear colleagues!</h2>
       <p style={{ textAlign: "center" }}>
         The organizers invite you to take <br />
         part in the work of the <br />

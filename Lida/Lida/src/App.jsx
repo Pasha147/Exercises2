@@ -1,36 +1,69 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect, useRef } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
+import Header from "./components/header";
+import Main from "./components/main_a";
+import Menu from "./components/menu";
+import Footer from "./components/footer";
 
-
-import Header from './components/header'
-import Main from './components/main';
-import Menu from './components/menu';
-import Footer from './components/footer';
-
-import { text } from '../public/dataArray'
+import { text } from "../public/dataArray";
 
 function App() {
-  const[lang, setLang]=useState('Ukr')
-  let textCont= lang==='Ukr'? text.Ukr: text.En
-  const[colorMenu, setColorMenu]=useState(
-    textCont.main.articles.map(()=>{return {ratio: 0}})
-  )
-  const menu=textCont.main.articles.map((item)=>{return {name: item.navMenu}})
-const articles=textCont.main.articles.map((item)=>{return item.article})
-// console.log(colorMenu);
+  const [dataf, setDataf] = useState({ Ukr: [], En: [] }); 
 
+  const [lang, setLang] = useState("Ukr");
+  const [articles, setArticles] = useState([]);
+  let textCont = lang === "Ukr" ? text.Ukr : text.En;
+  const [colorMenu, setColorMenu] = useState(
+    // textCont.main.articles.map(()=>{return {ratio: 0}})
+    []
+  );
+
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "/dataArraya.jsx";
+    script.onload = () => {
+      if (window.dataArray) {
+        let dataUkr = window.dataArray.map((item) => {
+          return item.Ukr;
+        });
+        let dataEn = window.dataArray.map((item) => {
+          return item.En;
+        });
+        // console.log(dataRef.current);
+
+        setDataf({ Ukr: dataUkr, En: dataEn }); // Заставляем компонент перерендериться
+      }
+    };
+
+    script.onerror = (error) => {
+      console.error("Error loading dataArray:", error);
+    };
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+  
 
   return (
-<div className="App">
-     <Header textCont={textCont.header} lang={lang} setLang={setLang}/>
-     <Menu textCont={menu} colorMenu={colorMenu}/>
-     <Main textCont={articles} setColorMenu={setColorMenu}/>
-      <Footer textCont={textCont.footer}/>
+    <div className="App">
+      <Header textCont={textCont.header} lang={lang} setLang={setLang} />
+
+      <Main
+        textCont={lang === "Ukr" ? dataf.Ukr : dataf.En}
+        setColorMenu={setColorMenu}
+      />
+
+      
+      <Footer textCont={textCont.footer} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
