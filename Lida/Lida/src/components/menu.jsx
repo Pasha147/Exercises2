@@ -4,6 +4,7 @@ import cl from "./menu.module.css";
 import { useState, useEffect, useRef } from "react";
 
 export default function Menu(props) {
+  // console.log(props.colorMenu);
   const wrapperRef = useRef(null);
 
   const [burMenu, setBurMenu] = useState(false);
@@ -60,11 +61,11 @@ export default function Menu(props) {
             >
               <div
                 className={cl.neonButton}
-                style={{ opacity: `${props.colorMenu[num].ratio / 100}` }}
+                style={{ opacity: `${props.colorMenu[num] / 100}` }}
               ></div>
 
               <div className={burMenu ? cl.liNameOn : cl.liNameOff}>
-                <span>{`${link.name}`}</span>
+                <span>{`${link}`}</span>
               </div>
             </li>
           );

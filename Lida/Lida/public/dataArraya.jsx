@@ -3,7 +3,7 @@ window.dataArray = [
     Ukr: {
       navMenu: "Ukr1 sfsfsdfsdfsf",
       article: `<h2>Ukr1 sdfsf</h2>
-    <p>sdfsf</p>`,
+    <p>sdfsf</p> <p>sdfsf</p> <p>sdfsf</p> <p>sdfsf</p> <p>sdfsf</p> <p>sdfsf</p>`,
     },
     En: {
       navMenu: "En1 sfsfsdfsdfsf",

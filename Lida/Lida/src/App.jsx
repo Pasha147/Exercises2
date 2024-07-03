@@ -37,6 +37,7 @@ function App() {
         // console.log(dataRef.current);
 
         setDataf({ Ukr: dataUkr, En: dataEn }); // Заставляем компонент перерендериться
+        setColorMenu (window.dataArray.map(()=>0))
       }
     };
 
@@ -54,6 +55,13 @@ function App() {
   return (
     <div className="App">
       <Header textCont={textCont.header} lang={lang} setLang={setLang} />
+      <Menu 
+      textCont={
+        (lang === "Ukr" ? dataf.Ukr : dataf.En).map((item)=>{
+          return item.navMenu
+        })
+      } 
+      colorMenu={colorMenu}/>
 
       <Main
         textCont={lang === "Ukr" ? dataf.Ukr : dataf.En}
