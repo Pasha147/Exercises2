@@ -5,6 +5,7 @@
   left: 0;
   box-shadow: 5px 5px 10px #1e2828b8;
   background-color:var(--appCol);
+  background-image: linear-gradient(#4f8e7d, #4b6061 90%);
   /* height: var(--headerHeight); */
   position: relative;
 }
@@ -19,6 +20,7 @@
   height: var(--headerHeight);
   /* height: 100%; */
   padding: 3px;
+  /* background-color: blue; */
   
 }
 .link_logo img{

@@ -2,14 +2,32 @@ window.dataArray = [
   {
     Ukr: {
       navMenu: "Ukr1 sfsfsdfsdfsf",
-      article: `<h2>Ukr1 sdfsf</h2>
-    <p>sdfsf</p> <p>sdfsf</p> <p>sdfsf</p> <p>sdfsf</p> <p>sdfsf</p> <p>sdfsf</p>`,
+      article: `
+      <h2>Привіт</h2>
+    <p>sdfsfфвафвафва фівафвіа фвіа фіва </p>
+     <p> sdfsf</p> 
+     <p>sdfsf</p> 
+     <p>sdfsf  sdfsf sdfsf sdfsf 
+     <br/>
+     <h2>Привіт</h2>
+     sdfsf sdfsf sdfsf</p> 
+     <p>sdfsf</p> 
+     <p>sdfsf</p>`,
     },
     En: {
-      navMenu: "En1 sfsfsdfsdfsf",
-      article: `<h2>En1 sdfsf</h2>
-    <p>sdfsf</p>`,
-    },
+      navMenu: "Horizon Europe",
+      article: `<h2>Horizon Europe</h2>
+    <p>Research and innovation funding programme until 2027. How to get funding, programme structure, 
+    <br/>
+    missions, European partnerships, news and events. </p>
+    <a> <a/>
+ <a href="https://research-and-innovation.ec.europa.eu/funding/funding-opportunities/funding-programmes-and-open-calls/horizon-europe_en">https://research-and-innovation.ec.europa.
+           
+          </a>
+
+    `,
+    
+  },
   },
   {
     Ukr: {

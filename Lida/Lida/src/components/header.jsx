@@ -18,7 +18,7 @@ const textCont=props.textCont
       <div className="container">
         <div className={cl.h_body}>
           <a className={cl.link_logo} href="/">
-            <img src="./img/logo1.jpg" alt="Logo"></img>
+            <img src="./img/nanu1.png" alt="Logo"></img>
           </a>
           <div className={cl.h_text}>
             <h1>{textCont.h1}</h1>

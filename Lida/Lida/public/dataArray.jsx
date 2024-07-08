@@ -5,8 +5,8 @@ window.dataArray = [1,2,3];
 export const text = {
   Ukr: {
     header: {
-      h1: "Грантова Підтримка",
-      h2: "новини",
+      h1: "Інститут механіки ім. С.П.\u00A0Тимошенка",
+      h2: "Національна академія наук України",
     },
     main: {
       articles: [],
@@ -21,8 +21,8 @@ export const text = {
 
   En: {
     header: {
-      h1: "Mechanics",
-      h2: "Contemporary Approaches and Future Directions",
+      h1: "S.P.\u00A0Timoshenko Institute of Mechanics",
+      h2: "of National Academy of Science of Ukraine",
     },
     main: {
       articles: [],

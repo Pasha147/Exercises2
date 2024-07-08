@@ -10,12 +10,12 @@
   --appCol: aliceblue;
   --headerHeight: 150px;
   --langBtnWidth:4rem;
-  --h1TextSize: 5rem;
+  --h1TextSize: 4rem;
   --h2TextSize: 2rem;
   --navTop: calc(var(--headerHeight) + 10px);
   --navRight: 0.5rem;
-  --colHead:rgb(32 32 210);
-  --col1: rgb(152, 98, 224);
+  --colHead:rgb(17, 17, 117);
+  --col1: rgba(4, 43, 48, 0.781);
   --firstArtFont: 1.75rem;
 
   --clr-neon: rgb(32 32 210);
