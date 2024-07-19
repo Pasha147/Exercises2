@@ -9,13 +9,13 @@
   --fonBgCol: rgba(128, 128, 128, 0.26);
   --appCol: aliceblue;
   --headerHeight: 150px;
-  --langBtnWidth:4rem;
-  --h1TextSize: 4rem;
+  --langBtnWidth:3rem;
+  --h1TextSize: 3rem;
   --h2TextSize: 2rem;
-  --navTop: calc(var(--headerHeight) + 10px);
+  --navTop: calc(var(--headerHeight) + 3rem);
   --navRight: 0.5rem;
   --colHead:rgb(17, 17, 117);
-  --col1: rgba(4, 43, 48, 0.781);
+  --col1: rgba(4, 43, 48, 0.304);
   --firstArtFont: 1.75rem;
 
   --clr-neon: rgb(32 32 210);
@@ -76,12 +76,12 @@ h2 {
 }
 
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
   :root {
-    --headerHeight: 125px;
-    --h1TextSize: 4rem;
+    --headerHeight: 100px;
+    --h1TextSize: 2.25rem;
     --h2TextSize: 1.75rem;
-    --langBtnWidth:3rem;
+    --langBtnWidth:2rem;
     --navRight: 1rem;
     --navTop: 50%;
     --firstArtFont: 1.75rem;
@@ -89,8 +89,8 @@ h2 {
 }
 @media (max-width: 500px) {
   :root {
-    --headerHeight: 100px;
-    --h1TextSize: 3.25rem;
+    --headerHeight: 80px;
+    --h1TextSize: 2rem;
     --h2TextSize: 1.4rem;
     --langBtnWidth:2rem;
     --navRight: 0.1rem;
@@ -98,10 +98,10 @@ h2 {
     --firstArtFont: 1.4rem;
   }
 }
-@media (max-width: 400px) {
+@media (max-width: 450px) {
   :root {
-    --headerHeight: 90px;
-    --h1TextSize: 2rem;
+    --headerHeight: 60px;
+    --h1TextSize: 1.5rem;
     --h2TextSize: 1.125rem;
     --langBtnWidth:1.75rem;
     --navRight: 0.1rem;

@@ -60,6 +60,7 @@ export default function Main(props) {
   return(
     <div className="container">
       <main className={cl.main}>
+        <h2>{props.h2}</h2>
         {
          articles.map((item, index) => {
           return (

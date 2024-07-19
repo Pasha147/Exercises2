@@ -40,6 +40,7 @@
   margin: 0.25rem;
   line-height: 1;
   font-size: var(--h1TextSize);
+  padding: 0 1.5rem;
 }
 .h_text h2{
   margin: 0.25rem;

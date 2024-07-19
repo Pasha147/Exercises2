@@ -64,7 +64,9 @@ function App() {
       colorMenu={colorMenu}/>
 
       <Main
+        h2={lang === "Ukr" ? 'Гранти та конкурси' : 'Grants and competitions'}
         textCont={lang === "Ukr" ? dataf.Ukr : dataf.En}
+
         setColorMenu={setColorMenu}
       />
 
