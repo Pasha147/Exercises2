@@ -1,0 +1,63 @@
+body {
+    box-sizing: border-box;
+    
+}
+
+main {
+    width: 70%;
+    float: left;
+
+}
+
+aside {
+    width: 30%;
+    float: right;
+    position: relative;
+}
+
+header {
+    width: 100%;
+}
+
+footer {
+    width: 100%;
+}
+
+.info {
+    height: 460px;
+    overflow: auto;
+    
+}
+.info_pill {
+    margin-bottom: 500px;
+}
+
+form {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.header_line {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+.client_stories {
+    margin: var(--space-size);
+    column-count: 3; 
+    column-gap: 20px; 
+}
+
+.features {
+    background: var(--primary-color);
+    padding-top: var(--space-size);
+    column-count: 2; 
+    column-gap: 0; 
+}
+
+h2 {
+    column-span: all;
+}
