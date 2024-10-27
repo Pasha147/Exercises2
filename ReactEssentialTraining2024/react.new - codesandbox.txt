@@ -1,0 +1,9 @@
+react.new - codesandbox
+https://usehooks.com/
+fatch data from a GraphQL API 
+
+https://snowtooth.moonhighway.com/ 
+query{
+  allLifts{
+     name }
+}

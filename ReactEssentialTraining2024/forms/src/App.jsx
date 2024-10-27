@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useRef } from "react";
+import "./App.css";
+import FormRef from "./components/FormRef";
+import FormState from "./components/FormState";
+import FormCustHook from "./components/FormCustHook";
+import FetchData from "./components/FetchData";
+import Render from "./components/Render";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const text = useRef();
+  const hexColor = useRef();
+
+  const submit = (e) => {
+    e.preventDefault();
+    const textV=text.current.value
+    const colorV=hexColor.current.value
+    alert(`${textV}, ${colorV}`)
+    text.current.value=''
+    colorV.current.value=''
+  };
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>React.js Essential Training Working with uncontrolled components</h1>
+      <a href="https://www.linkedin.com/learning/react-js-essential-training-14836121/working-with-uncontrolled-components?resume=false&u=106534538">
+        src
+      </a>
+      <Render/>
+     <FetchData/>
+     <FormRef/>
+     <FormState/>
+     <FormCustHook/>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
