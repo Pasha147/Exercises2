@@ -5,6 +5,7 @@ import FormState from "./components/FormState";
 import FormCustHook from "./components/FormCustHook";
 import FetchData from "./components/FetchData";
 import Render from "./components/Render";
+import UsReducer from "./components/UsReducer";
 
 function App() {
   const text = useRef();
@@ -30,6 +31,7 @@ function App() {
      <FormRef/>
      <FormState/>
      <FormCustHook/>
+     <UsReducer/>
     </>
   );
 }
