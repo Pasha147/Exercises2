@@ -1,1 +1,8 @@
 0:05:30 Setings for Live Server  @ext:ritwickdey.LiveServer full reload - 'true'
+0:06:05 npx tailwindcss init
+0:07:35 tailwind.config --> content: ['./build/*.html'], 
+0:09:35 file\preferense\settings --> in search type 'unknow' --> CSS>Lint ->to ignore (ignore problems with css)
+0:10:25 npx tailwindcss -i ./src/input.css -o ./build/css/style.css
+
+
+
