@@ -1,8 +1,20 @@
+
+Tailwind CSS Full Course for Beginners | Complete All-in-One Tutorial | 3 Hours
+https://www.youtube.com/watch?v=lCxcTsOHrjo&ab_channel=DaveGray
+
+	Chapter 1
 0:05:30 Setings for Live Server  @ext:ritwickdey.LiveServer full reload - 'true'
 0:06:05 npx tailwindcss init
 0:07:35 tailwind.config --> content: ['./build/*.html'], 
 0:09:35 file\preferense\settings --> in search type 'unknow' --> CSS>Lint ->to ignore (ignore problems with css)
 0:10:25 npx tailwindcss -i ./src/input.css -o ./build/css/style.css
+0:13:35 npx tailwindcss -i ./src/input.css -o ./build/css/style.css --watch
+0:15:18 Install extention for vc: Tailwind CSS IntelliSense
+0:21:00 Install extention for vc: Inline fold
 
+	Chapter 2
+0:28:00 npm init -y    - to create package.json
+0:28:20 In the  package.json change "test": "echo...   to   
+		"tailwind": "npx tailwindcss -i ./src/input.css -o ./build/css/style.css --watch"
 
 
