@@ -16,5 +16,23 @@ https://www.youtube.com/watch?v=lCxcTsOHrjo&ab_channel=DaveGray
 0:28:00 npm init -y    - to create package.json
 0:28:20 In the  package.json change "test": "echo...   to   
 		"tailwind": "npx tailwindcss -i ./src/input.css -o ./build/css/style.css --watch"
+0:29:37 npm i -D prettier-plugin-tailwindcss
+0:31:15 Add prettier to scripts in package.json. The prettier will just format html 
+		"scripts": {...,  "prettier":"npx prettier --write **/*.html"}
+0:34:45 Word wrap in VC Alt+z 
+0:37:55 https://emojipedia.org/     🚀 U+1F6F8
+0:40:40 sm:hidden    media query for 640px
+0:42:41 So it's an anchor link to another part of the page <a href="#rockets" class="hover:opacity-90"></a>
+0:55:22 Ctrl+d - to hilight ntxt the same word
+
+
+
+
+
+
+
+
+
+
 
 
