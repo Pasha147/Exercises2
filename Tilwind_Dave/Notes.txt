@@ -3,6 +3,7 @@ Tailwind CSS Full Course for Beginners | Complete All-in-One Tutorial | 3 Hours
 https://www.youtube.com/watch?v=lCxcTsOHrjo&ab_channel=DaveGray
 
 	Chapter 1
+
 0:05:30 Setings for Live Server  @ext:ritwickdey.LiveServer full reload - 'true'
 0:06:05 npx tailwindcss init
 0:07:35 tailwind.config --> content: ['./build/*.html'], 
@@ -13,6 +14,7 @@ https://www.youtube.com/watch?v=lCxcTsOHrjo&ab_channel=DaveGray
 0:21:00 Install extention for vc: Inline fold
 
 	Chapter 2
+
 0:28:00 npm init -y    - to create package.json
 0:28:20 In the  package.json change "test": "echo...   to   
 		"tailwind": "npx tailwindcss -i ./src/input.css -o ./build/css/style.css --watch"
@@ -24,6 +26,11 @@ https://www.youtube.com/watch?v=lCxcTsOHrjo&ab_channel=DaveGray
 0:40:40 sm:hidden    media query for 640px
 0:42:41 So it's an anchor link to another part of the page <a href="#rockets" class="hover:opacity-90"></a>
 0:55:22 Ctrl+d - to hilight ntxt the same word
+
+	Chapter 3
+
+1:08:22 To change dark or light color mode: Right click in Windows on the desktop and choose 'personalize' then going to switch dark or light
+1:35:22  you've got the href for the phone and on a mobile device clicking that should actually dial that number Phone: <a href="tel:+15555555555">(555) 555-5555</a>
 
 
 
