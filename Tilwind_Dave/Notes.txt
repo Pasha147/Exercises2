@@ -2,6 +2,12 @@
 Tailwind CSS Full Course for Beginners | Complete All-in-One Tutorial | 3 Hours
 https://www.youtube.com/watch?v=lCxcTsOHrjo&ab_channel=DaveGray
 
+{
+Another interesting video on this topic	
+Tailwind CSS Full Course 2023 | Build and Deploy a Nike Website
+https://www.youtube.com/watch?v=tS7upsfuxmo&ab_channel=JavaScriptMastery
+}
+
 	Chapter 1
 
 0:05:30 Setings for Live Server  @ext:ritwickdey.LiveServer full reload - 'true'
@@ -32,6 +38,11 @@ https://www.youtube.com/watch?v=lCxcTsOHrjo&ab_channel=DaveGray
 1:08:22 To change dark or light color mode: Right click in Windows on the desktop and choose 'personalize' then going to switch dark or light
 1:35:22  you've got the href for the phone and on a mobile device clicking that should actually dial that number Phone: <a href="tel:+15555555555">(555) 555-5555</a>
 
+Chapter 4
+
+2:09:03 << defer >> the script do not load the JavaScript until you've loaded the rest of the page
+ 	<script src="js/main.js" defer></script>
+2:10:30	in the tailwind.config.js -->  content: ["./build/*.html", "./build/js/*.js"],
 
 
 
