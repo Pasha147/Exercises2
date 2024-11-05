@@ -44,8 +44,10 @@ Chapter 4
  	<script src="js/main.js" defer></script>
 2:10:30	in the tailwind.config.js -->  content: ["./build/*.html", "./build/js/*.js"],
 
+Chapter 4
 
-
+2:39:30 // content: ["./build/*.html", "./build/js/*.js"],
+  	content: ["./build/**/*.{html,js}"],
 
 
 
