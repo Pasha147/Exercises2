@@ -38,18 +38,34 @@ https://www.youtube.com/watch?v=tS7upsfuxmo&ab_channel=JavaScriptMastery
 1:08:22 To change dark or light color mode: Right click in Windows on the desktop and choose 'personalize' then going to switch dark or light
 1:35:22  you've got the href for the phone and on a mobile device clicking that should actually dial that number Phone: <a href="tel:+15555555555">(555) 555-5555</a>
 
-Chapter 4
+	Chapter 4
 
 2:09:03 << defer >> the script do not load the JavaScript until you've loaded the rest of the page
  	<script src="js/main.js" defer></script>
 2:10:30	in the tailwind.config.js -->  content: ["./build/*.html", "./build/js/*.js"],
 
-Chapter 4
+	Chapter 5
 
 2:39:30 // content: ["./build/*.html", "./build/js/*.js"],
   	content: ["./build/**/*.{html,js}"],
 
+2:47:30 extend: {
+      		colors:{....
+2:48:35 Arbitrary Method [...]if you just needed to use it once or twice you might choose to use that arbitrary method --> text-[#ffffff]
+2:50:00  
+	git init
+	git add .
+	git commit -m 'first commit'
 
+		copy from Github
+	git remote add origin https://github.com/Pasha147/Tailwin_Dave.git
+	git branch -M main
+	git push -u origin main
+
+		https://render.com/
+	Publish directory --> build
+
+https://tailwin-dave2024.onrender.com/#contact
 
 
 
