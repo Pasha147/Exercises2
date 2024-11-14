@@ -3,7 +3,7 @@
 import { useState, useTransition } from "react";
 import { generate, getData, generateObj, streamComponent } from "./api/actions";
 import { readStreamableValue } from "ai/rsc";
-import {askAssistant1} from './api/assistant'
+import { askAssistant1 } from "./api/assistant";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
@@ -23,26 +23,32 @@ export default function Home() {
 
     startTransition(async () => {
       const answer = await askAssistant1(query);
-      setResponse(answer);
+           
+      setResponse(JSON.stringify(answer, null, 2));
     });
   }
 
   return (
     <div className="">
       <main>
-      <div>
-      <form onSubmit={handleSubmit}>
-        <input
-        className="dark:bg-gray-500"
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Введи запит"
-        />
-        <button type="submit" disabled={isPending}>Надіслати</button>
-      </form>
-      <p>Відповідь асистента: {response}</p>
-    </div>
+        <div>
+          <form onSubmit={handleSubmit}>
+            <input
+              className="dark:bg-gray-500"
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Введи запит"
+            />
+            <button type="submit" disabled={isPending}>
+              Надіслати
+            </button>
+          </form>
+          <p>Відповідь асистента:</p>
+          <pre>
+            {response}
+          </pre>
+        </div>
         <hr />
         <div>
           <form

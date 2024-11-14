@@ -1,38 +1,32 @@
-"use server"
+"use server";
 
 import { NextResponse } from "next/server";
 import { createAndPoll } from "@ai-sdk/openai";
 import OpenAI from "openai";
 
-
-
 export async function askAssistant1(query) {
-
   const openai = new OpenAI();
-  const thread_id='thread_TEoHZF0vxE6qZ2vqNxUs96Fa'
-  const assistant_id='asst_7NTwKaXeUlqw017g4bMKLQvB'
+  const thread_id = "thread_aU5YlabzOYctfOGRr6zDa0iO";
+  const assistant_id = "asst_7NTwKaXeUlqw017g4bMKLQvB";
 
-  const message = await openai.beta.threads.messages.create(
-    thread_id,
-    {
-      role: "user",
-      content: query,
-    }
-  );
-  let run = await openai.beta.threads.runs.createAndPoll(
-    thread_id,
-    { 
-      assistant_id: assistant_id,
-      instructions: "Answer the question, Please."
-    }
-  );
-  if (run.status === 'completed') {
-    const messages = await openai.beta.threads.messages.list(
-      run.thread_id
-    );
-    for (const message of messages.data.reverse()) {
-      console.log(`${message.role} > ${message.content[0].text.value}`);
-    }
+  const message = await openai.beta.threads.messages.create(thread_id, {
+    role: "user",
+    content: query,
+  });
+  let run = await openai.beta.threads.runs.createAndPoll(thread_id, {
+    assistant_id: assistant_id,
+    instructions: "Answer the question, Please.",
+  });
+  if (run.status === "completed") {
+    const messages = await openai.beta.threads.messages.list(run.thread_id);
+    // const mess=messages.data.reverse()
+    const mess = messages.data.reverse().map((item) => {
+      return { role: item.role, text: item.content[0].text.value };
+    });
+    return mess;
+    // for (const message of messages.data.reverse()) {
+    //   console.log(`${message.role} > ${message.content[0].text.value}`);
+    // }
   } else {
     console.log(run.status);
   }
@@ -78,14 +72,15 @@ export async function askAssistant1(query) {
     console.log(citations.join("\n"));
   }
     */
-    
 }
 
 export async function askAssistant(query) {
   const assistantId = "asst_7NTwKaXeUlqw017g4bMKLQvB"; // ID консультанта
-  const systemMessage = { role: "system", content: "Please search for relevant information in the files before responding." };
-
- 
+  const systemMessage = {
+    role: "system",
+    content:
+      "Please search for relevant information in the files before responding.",
+  };
 
   const response = await fetch("https://api.openai.com/v1/chat/completions", {
     method: "POST",
