@@ -1,115 +1,72 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useState, useTransition, useEffect } from "react";
 import { generate, getData, generateObj, streamComponent } from "./api/actions";
 import { readStreamableValue } from "ai/rsc";
-import { askAssistant1 } from "./api/assistant";
+import { askAssistant2, createThread } from "./api/assistant";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 30;
 
 export default function Home() {
-  const [generation, setGeneration] = useState("");
-  const [generation1, setGeneration1] = useState("");
-  const [generation2, setGeneration2] = useState("");
-  const [component, setComponent] = useState("");
-
+  const [threadid, setThreadid] = useState("");
   const [query, setQuery] = useState("");
-  const [response, setResponse] = useState("");
+  const [response, setResponse] = useState([]);
   const [isPending, startTransition] = useTransition();
+
+  useEffect(() => {
+    (async () => {
+      setThreadid(await createThread());
+    })();
+  }, []);
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     startTransition(async () => {
-      const answer = await askAssistant1(query);
-           
-      setResponse(JSON.stringify(answer, null, 2));
+      const answer = await askAssistant2(query, threadid);
+      setQuery("");
+      console.log(answer);
+
+      setResponse(answer);
     });
   }
 
   return (
     <div className="">
-      <main>
-        <div>
-          <form onSubmit={handleSubmit}>
-            <input
-              className="dark:bg-gray-500"
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Введи запит"
-            />
-            <button type="submit" disabled={isPending}>
-              Надіслати
-            </button>
-          </form>
-          <p>Відповідь асистента:</p>
-          <pre>
-            {response}
-          </pre>
-        </div>
-        <hr />
-        <div>
-          <form
-            onSubmit={async (e) => {
-              e.preventDefault();
-              setComponent(await streamComponent());
-            }}
-          >
-            <button className="dark:bg-teal-700 m-2 p-2 rounded">
-              Get Component
-            </button>
-            <div>{component}</div>
-          </form>
-        </div>
-        <hr />
-        <div>
+      <main className="p-4">
+        <form onSubmit={handleSubmit}>
+          <input
+            disabled={isPending}
+            className="dark:bg-gray-500 disabled:bg-slate-100"
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Enter your question"
+          />
           <button
-            className="dark:bg-teal-700 m-2 p-2 rounded"
-            onClick={async () => {
-              const { object } = await generateObj(
-                "people who have very superhero-like names"
-              );
-              for await (const partialObject of readStreamableValue(object)) {
-                if (partialObject) {
-                  setGeneration2(JSON.stringify(partialObject.people, null, 2));
-                }
-              }
-            }}
+            className="dark:bg-teal-700 m-2 p-2 rounded disabled:bg-teal-400"
+            type="submit"
+            disabled={isPending}
           >
-            View people
+            Ask!
           </button>
-          <pre>{generation2}</pre>
-        </div>
+          <p className={isPending? "text-white": "text-gray-600" }>Loading...</p>
+          
+        </form>
+        {<p>{`thread_id: ${threadid}`}</p>}
         <hr />
-        <button
-          className="dark:bg-teal-700 m-2 p-2 rounded"
-          onClick={async () => {
-            const { people } = await getData(
-              "people who sound like they have superhero names"
-            );
-            setGeneration1(JSON.stringify(people, null, 2));
-          }}
-        >
-          Get people
-        </button>
-        <pre className="mb-4">{generation1}</pre>
-        <button
-          onClick={async () => {
-            const { output } = await generate(
-              "What is the deepest lake in the US? Get wordy answer, please."
-            );
-            for await (const delta of readStreamableValue(output)) {
-              setGeneration(
-                (currentGeneration) => `${currentGeneration}${delta}`
-              );
-            }
-          }}
-        >
-          Ask!
-        </button>
-        <div>{generation}</div>
+        {response.length > 0 && (
+          <div>
+           
+            <ul>
+              {response.map((item, n) => (
+                <li key={`answer_${n}`}>{`${item.role}: ${item.text}`}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        <hr />
       </main>
     </div>
   );

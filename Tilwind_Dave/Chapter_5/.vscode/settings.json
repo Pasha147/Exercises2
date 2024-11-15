@@ -1,3 +1,4 @@
 {
-    "prettier.bracketSameLine": false
+    "prettier.bracketSameLine": false,
+    "liveServer.settings.port": 5501
 }

@@ -4,6 +4,50 @@ import { NextResponse } from "next/server";
 import { createAndPoll } from "@ai-sdk/openai";
 import OpenAI from "openai";
 
+export async function createThread() {
+  const openai = new OpenAI();
+  const assistant_id = process.env.OPENAI_ASSISTANT_ID;
+  const thread = await openai.beta.threads.create();
+// console.log(thread.id);
+
+  return thread.id
+}
+
+export async function askAssistant2(query, threadid) {
+  const openai = new OpenAI();
+  const assistant_id = process.env.OPENAI_ASSISTANT_ID;
+  // const thread = await openai.beta.threads.create();
+  const message = await openai.beta.threads.messages.create(threadid, {
+    role: "user",
+    content: query,
+  });
+
+  let run = await openai.beta.threads.runs.createAndPoll(threadid, {
+    assistant_id: assistant_id,
+    instructions:
+      "Answer the question, Please.",
+  });
+
+  if (run.status === 'completed') {
+    // const messages = await openai.beta.threads.messages.list(
+    //   run.thread_id
+    // );
+    const messages = await openai.beta.threads.messages.list(run.thread_id, {
+      limit: 10,
+      reverse: true // якщо доступний, цей параметр дозволить отримати останнє повідомлення першим
+    });
+    for (const message of messages.data.reverse()) {
+      // console.log(`${message.role} > ${message.content[0].text.value}`);
+      const mess = messages.data.reverse().map((item) => {
+        return { role: item.role, text: item.content[0].text.value };
+      });
+      return mess;
+    }
+  } else {
+    console.log(run.status);
+  }
+}
+
 export async function askAssistant1(query) {
   const openai = new OpenAI();
   const thread_id = "thread_aU5YlabzOYctfOGRr6zDa0iO";
