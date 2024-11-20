@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 @layer utilities {
-  .section-min-height{
+
+    .section-min-height{
       min-height: calc(100vh - 68px);
   }
 
@@ -19,8 +20,11 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* --background: #0a0a0a; */
-    --background: rgb(2,0,36) linear-gradient(25deg, rgba(2,0,36,1) 28%, rgba(0,46,82,1) 67%, rgba(0,86,159,1) 100%);
+    --background: #0a0a0a;
+    /* --background: rgb(2,0,36) linear-gradient(25deg, rgba(2,0,36,1) 28%, rgba(0,46,82,1) 67%, rgba(0,86,159,1) 100%); */
+
+    /* --background: linear-gradient(25deg, rgba(2,0,36,0.8) 28%, rgba(0,46,82,0.8) 67%, rgba(0,86,159,0.8) 100%); */
+     
     --foreground: #ededed;
   }
 }
@@ -28,5 +32,10 @@
 body {
   color: var(--foreground);
   background: var(--background);
+  /* background-size: cover, 40px 40px;
+  background-repeat: no-repeat, repeat; 
+  background-position: center, center;  */
+
+  
   font-family: Arial, Helvetica, sans-serif;
 } 
