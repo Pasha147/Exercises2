@@ -6,21 +6,11 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="max-w-4xl mx-auto">
+      <main className="max-w-4xl mx-auto [&>section]:pt-8  [&>section]:min-h-[100vh]">
         <section
-          id="home"
-          style={{
-            backgroundImage: `
-            
-            linear-gradient(25deg, rgba(2,0,36,0.8) 28%, rgba(0,46,82,0.8) 67%, rgba(0,86,159,0.8) 100%), 
-            url('/grid-pattern.svg') 
-    `,
-            backgroundSize: "cover, 40px 40px", // Градієнт "cover", сітка — фіксована
-            backgroundRepeat: "no-repeat, repeat", // Градієнт без повтору, сітка повторюється
-            backgroundPosition: "center, center", // Центрування для обох
-          }}
-          className="  block  widescreen:section-min-height tallscreen:section-min-height"
-          
+          id="home"   
+          className="bg-resume-section bg-gradient-cover-grid bg-no-repeat-grid bg-center-grid"
+          // widescreen:section-min-height tallscreen:section-min-height
         >
           <h1>Hi I'm Pasha</h1>
           <h2>Frontend Developer & Applied Mathematics PhD</h2>
@@ -50,7 +40,11 @@ export default function Home() {
 
         <hr className="mx-auto bg-black dark:bg-white w-1/2" />
 
-        <section id="work_exp" className="widescreen:section-min-height tallscreen:section-min-height">Work experiences</section>
+        <section id="experience" className="widescreen:section-min-height tallscreen:section-min-height">Work experiences</section>
+
+        <hr className="mx-auto bg-black dark:bg-white w-1/2" />
+
+        <section id="projects" className="widescreen:section-min-height tallscreen:section-min-height">Work projects</section>
 
         <hr className="mx-auto bg-black dark:bg-white w-1/2" />
 

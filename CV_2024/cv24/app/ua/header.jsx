@@ -5,7 +5,7 @@ import { useState } from "react";
 export default function Header() {
   const [burMenu, setBurMenu] = useState(true);
   return (
-    <header className="sticky top-0 z-10">
+    <header className="fixed w-[100%] top-0 z-10">
       <section className="text-right items-center max-w-4xl mx-auto p-2 ">
         <nav
           className={` ${
