@@ -17,19 +17,23 @@ module.exports = {
         tallscreen: { raw: "(max-aspect-ratio: 13/20)" },
       },
       backgroundImage: {
-        "resume-section": `
-          linear-gradient(25deg, rgba(2,0,36,0.95) 28%, rgba(0,46,82,0.95) 67%, rgba(0,86,159,0.95) 100%), 
-          url('/chestnut2.svg')`,
+        "resume-section": `linear-gradient(25deg, rgba(144, 174, 219, 0.7) 28%, rgba(141, 178, 207, 0.7) 67%, rgba(150, 196, 236, 0.7) 100%)`,
+        "resume-section_d": `linear-gradient(25deg, rgba(2,0,36,0.7) 28%, rgba(0,46,82,0.7) 67%, rgba(21, 42, 88,0.7) 100%)`,
+       
       },
 
       backgroundSize: {
-        "gradient-cover-grid": "cover, 300px 300px",
+        "gradient-cover-grid": "cover",
+        
+
       },
       backgroundRepeat: {
-        "no-repeat-grid": "no-repeat, repeat",
+        "no-repeat-grid": "no-repeat",
+        
       },
       backgroundPosition: {
-        "center-grid": "center, center",
+        "center-grid": "center",
+        
       },
 
       colors: {

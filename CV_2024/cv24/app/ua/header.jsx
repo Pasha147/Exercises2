@@ -10,14 +10,14 @@ export default function Header() {
         <nav
           className={` ${
             burMenu
-              ? `absolute w-[80%] bg-[#ffffff0f] flex flex-col [&>a]:text-right origin-top  animate-open-menu
+              ? `absolute w-[80%] bg-[#185486f0] flex flex-col [&>a]:text-right origin-top  animate-open-menu
 
                 sm:relative sm:w-auto sm:h-auto sm:[&>a]:text-center sm:animate-none sm:bg-transparent`
               : `hidden `
           }
-               sm:inline-block sm:[&>a]:text-center m-0-1 [&>a]:px-1 [&>a]:border-r-2 [&>a]:border-slate-600 [&>a]:inline-block md:[&>a]:min-w-24 [&>a]:opacity-70 [&>a:hover]:opacity-100 [&>a:hover]:[text-shadow:_3px_4px_7px_rgba(255,255,255,0.77)]`}
+                sm:inline-block sm:[&>a]:text-center m-0-1 [&>a]:px-1 [&>a]:border-r-2 [&>a]:border-slate-600 [&>a]:inline-block md:[&>a]:min-w-24 [&>a]:opacity-70 [&>a:hover]:opacity-100 [&>a:hover]:[text-shadow:_3px_4px_7px_rgba(255,255,255,0.77)]`}
         >
-          <a href="#home">Home</a>
+          <a href="#aboutme">Home</a>
           <a href="#skils">Skils</a>
           <a href="#education">Education</a>
           <a href="#experience">Work experience</a>

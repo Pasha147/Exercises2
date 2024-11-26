@@ -1,4 +1,5 @@
 Pasha:
 	was born in 2019,
 	he has a dog,
-	his girl's name is Oksana
+	his girl's name is Oksana,
+	Olenka is Pasha's secret girlfriend.
